@@ -2,6 +2,7 @@ import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { ProductServiceService } from '../../../service/product-service.service';
 import { NavbarComponent } from '../../navbar/navbar.component';
+import { OrderServiceService } from '../../../service/order-service.service';
 
 @Component({
   selector: 'app-order-product-detail',
@@ -19,8 +20,8 @@ export class OrderProductDetailComponent {
   page:number[]=[];
   first:boolean=false;
   last:boolean=false;
-  constructor(private productService:ProductServiceService){
-    this.fetchData()
+  status:string=""
+  constructor(private productService:ProductServiceService,private orderService:OrderServiceService){
   }
   fetchData(){
     this.productService.orderProductDetail().subscribe({
@@ -44,5 +45,49 @@ export class OrderProductDetailComponent {
     this.pageNumber=n;
     this.fetchData();
   
+  }
+  all()
+  {
+    this.fetchData()
+
+  }
+  delivered(){
+    this.status="DELIVERED";
+this.orderService.showOrderedProductByStatus(this.status).subscribe({
+  next:(data)=>{
+    this.products=data;
+  },
+  error:(error)=>{
+    console.log(error)
+    this.products=[]
+
+  }
+})
+  }
+  shipped(){
+    this.status="SHIPPED";
+    this.orderService.showOrderedProductByStatus(this.status).subscribe({
+      next:(data)=>{
+        this.products=data;
+      },
+      error:(error)=>{
+        console.log(error)
+        this.products=[]
+      }
+    })
+
+  }
+  ordered(){
+this.status="ORDERED";
+this.orderService.showOrderedProductByStatus(this.status).subscribe({
+  next:(data)=>{
+    this.products=data;
+  },
+  error:(error)=>{
+    console.log(error)
+    this.products=[]
+
+  }
+})
   }
 }

@@ -49,4 +49,16 @@ addProductApi:string="http://localhost:8082/product/add"
 
     })
   }
+  getOutOfStockProduct():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/product/vendor/product/outOfStock',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getProductArchived(name:string):Observable<any>{
+    return this.http.get<any>('http://localhost:8082/product/vendor/status/'+name,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
 }
