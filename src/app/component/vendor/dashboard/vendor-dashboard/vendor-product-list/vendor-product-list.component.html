@@ -1,0 +1,53 @@
+<app-navbar></app-navbar>
+<table class="table mt-4" >
+    <thead>
+      <tr>
+        <th scope="col" style="width: 5%">#</th>
+        <th scope="col" style="width: 15%">Title</th>
+        <th scope="col" style="width: 10%">Price</th>
+        <th scope="col" style="width: 10%">Discount</th>
+        <th scope="col" style="width: 10%">Stock Quantity</th>
+
+        <th scope="col" style="width: 10%">Status</th>
+
+        <th scope="col" style="width: 15%">Out Of Stock </th>
+
+        <th scope="col" class="text-center"> Actions </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <th scope="row">{{product.id}}</th>
+        <td>{{product.title}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.discount}}</td>
+        <td>{{product.quantity}}</td>
+        <td>{{product.status}}</td>
+        <td>{{product.outOfStock}}</td>
+
+        <td> <button class="btn btn-info bn-small">View Product Stats</button>
+          &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-danger bn-small">Archive</button> 
+            &nbsp;&nbsp;&nbsp;
+            <button class="btn btn-secondary bn-small">Edit</button>
+        </td>
+      </tr>
+       
+    </tbody>
+  </table>
+  <nav aria-label="Page navigation example mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item"
+      >
+        <button class="page-link bg-success text-white" [disabled]="first==true"  (click)="onPrev()"> Prev</button>
+      </li>
+      <span *ngFor="let p of page">
+        <button class="page-link bg-success text-white" (click)="onPageClick(p)">{{p+1}} </button>
+      </span>
+      
+       
+      <li class="page-item">
+        <button class="page-link bg-success text-white"  (click)="onNext()" [disabled]="last==true"> Next</button>
+      </li>
+    </ul>
+  </nav>

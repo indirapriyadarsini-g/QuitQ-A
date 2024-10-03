@@ -1,0 +1,46 @@
+<nav class="navbar navbar-light bg-success">
+    <div class="container-fluid">
+      <span class="navbar-brand mb-0 h1 text-white">QuitQ</span>
+    </div>
+  </nav>
+<div class="conatiner" style="margin-top: 100px;">
+    <div class="row">
+        <div class="col sm-3"></div>
+        <div class="col md-6">
+            <div class="card bg-dark">
+                <div class="card-header text-white">
+                    Login
+                </div>
+                <div class="card-body text-white">
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                        <div class="mb-3">
+                            <label class="form-label">Email address</label>
+                            <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="username" >
+                            <div *ngIf="loginForm.get('username').invalid && loginForm.get('username').touched"> 
+                                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                                <small *ngIf="loginForm.get('username').errors['required']">username is required</small>
+                                <small *ngIf="loginForm.get('username').errors['email']">username/email is invalid</small>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label text-white">Password</label>
+                            <input type="password" class="form-control" formControlName="password" >
+                            <div *ngIf="loginForm.get('password').invalid && loginForm.get('password').touched"> 
+                                 <small *ngIf="loginForm.get('password').errors['required']">password is required</small>
+                             </div>
+                        </div>
+                         
+                        <input type="submit" class="btn btn-success" [disabled]="loginForm.invalid" value="login"> 
+                    </form>
+                
+                </div>
+                <div class="card-footer text-white">
+                    <span>Forgot Password? Reset here </span>
+                    <br />
+                    <span>Sign Up here</span>
+                </div> 
+            </div>
+        </div>
+        <div class="col sm-3"></div>
+
+    </div>
