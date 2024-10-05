@@ -1,0 +1,48 @@
+<div class="container order-details mt-5">
+    <h2 class="text-center mb-4">Order Details</h2>
+    
+    <div class="order-summary mb-4">
+      <h4>Order Summary</h4>
+      <p><strong>Order Number:</strong> {{ order.orderNumber }}</p>
+      <p><strong>Date Placed:</strong> {{ order.orderDate }}</p>
+      <p><strong>Total Amount:</strong> ₹{{ order.totalAmount }}</p>
+    </div>
+  
+    <div class="shipping-info mb-4">
+      <h4>Shipping Information</h4>
+      <!-- <p><strong>Ship To:</strong> {{ order.shippingAddress.name }}</p> -->
+      <!-- <p><strong>Address:</strong> {{ order.shippingAddress.address }}</p>
+      <p><strong>Contact:</strong> {{ order.shippingAddress.phone }}</p> -->
+    </div>
+  
+    <div class="order-items mb-4">
+      <h4>Items in your order</h4>
+      
+      <div *ngFor="let item of order.items" class="order-item card shadow-sm mb-3">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img [src]="item.imageUrl" class="img-fluid rounded-start" alt="{{ item.title }}">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title">{{ item.title }}</h5>
+              <p class="card-text">Category: {{ item.category }}</p>
+              <p class="card-text">Quantity: {{ item.quantity }}</p>
+              <p class="card-text text-muted">Price: ₹{{ item.price }}</p>
+              <p class="card-text text-muted">Delivered on: {{ item.deliveryDate }}</p>
+            </div>
+          </div>
+          <div class="col-md-2 text-end actions">
+            <button class="btn btn-outline-primary btn-sm mb-2" (click)="reviewItem(item.id)">Review</button>
+            <button class="btn btn-outline-secondary btn-sm mb-2" (click)="returnItem(item.id)">Return</button>
+            <button class="btn btn-outline-warning btn-sm" (click)="exchangeItem(item.id)">Exchange</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center mt-4">
+      <button class="btn btn-primary" (click)="goBack()">Back to Orders</button>
+    </div>
+  </div>
+  

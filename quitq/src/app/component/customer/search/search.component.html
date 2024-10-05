@@ -1,1 +1,26 @@
-<p>search works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <h2>Search Results</h2>
+  
+    <div *ngIf="products.length > 0">
+      <p>Showing results for: <strong>{{ category }}</strong></p>
+  
+      <div class="row">
+        <div class="col-md-3" *ngFor="let product of products">
+          <div class="card product-card shadow-sm">
+            <img [src]="product.image" class="card-img-top" [alt]="product.title">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ product.title }}</h5>
+              <p class="card-text">${{ product.price }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="products.length === 0">
+      <p>No results found for: <strong>{{ category }}</strong></p>
+    </div>
+  </div>
+  

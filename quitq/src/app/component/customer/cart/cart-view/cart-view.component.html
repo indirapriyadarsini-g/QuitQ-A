@@ -1,2 +1,46 @@
 <app-navbar></app-navbar>
 
+<div class="container mt-5">
+    <h2 class="mb-4">Your Cart</h2>
+    <div *ngIf="cartProducts.length > 0; else emptyCart">
+      <div class="row">
+        <div class="col-md-8">
+          <div *ngFor="let product of cartProducts" class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="product.imageUrl" class="img-fluid rounded-start" alt="Product Image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title }}</h5>
+                  <p class="card-text">
+                    Quantity: {{ product.quantity }} <br>
+                    Price: ${{ product.price }}
+                  </p>
+                  <button class="btn btn-danger btn-sm" (click)="removeFromCart(product.id)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cart Summary</h5>
+              <p class="card-text">
+                Total Items: {{ getTotalItems() }} <br>
+                Total Price: ${{ getTotalPrice() }}
+              </p>
+              <button class="btn btn-success" (click)="checkout()">Proceed to Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #emptyCart>
+      <p>Your cart is empty!</p>
+    </ng-template>
+  </div>
+  

@@ -1,1 +1,57 @@
-<p>home works!</p>
+<app-navbar></app-navbar>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Categories</h2>
+    <div class="row g-4">
+        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+            <div class="card category-card shadow-sm">
+                <img src="category1.jpg" class="card-img-top" alt="Category 1">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Groceries</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+            <div class="card category-card shadow-sm">
+                <img src="category2.jpg" class="card-img-top" alt="Category 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Home</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+            <div class="card category-card shadow-sm">
+                <img src="category3.jpg" class="card-img-top" alt="Category 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Electronics</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+            <div class="card category-card shadow-sm">
+                <img src="category4.jpg" class="card-img-top" alt="Category 4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Fashion</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5"></div>
+        <h2 class="text-center mb-4"> Products</h2>
+        <div class="row g-4">
+            
+            <div class="col-md-3" *ngFor="let product of productList">
+                <div class="card product-card shadow-sm">
+                    <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
+                    <img src="img.jpg" class="card-img-top" alt="{{product.title}}">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{product.title}}</h5>
+                        <p class="card-text">Out of stock: {{product.outOfStock}}</p>
+                        <p class="card-text">Category: {{product.c}}</p>
+                        <p class="card-text text-muted">Price: {{product.price}}</p>
+                        <button class="btn btn-primary" (click)="addToCart(product)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>

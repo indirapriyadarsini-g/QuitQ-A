@@ -1,1 +1,35 @@
-<p>wishlist-view works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <h2 class="mb-4">Your Wishlist</h2>
+    <div *ngIf="wlProducts.length > 0; else emptyWishlist">
+      <div class="row">
+        <div class="col-md-8">
+          <div *ngFor="let product of wlProducts" class="card mb-3">
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img [src]="product.imageUrl" class="img-fluid rounded-start" alt="Product Image">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title }}</h5>
+                  <p class="card-text">
+                    Quantity: {{ product.quantity }} <br>
+                    Price: ${{ product.price }}
+                  </p>
+                  <button class="btn btn-danger btn-sm" (click)="removeFromWishlist(product.id)">Remove</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        
+      </div>
+    </div>
+  
+    <ng-template #emptyWishlist>
+      <p>Your wishlist is empty!</p>
+    </ng-template>
+  </div>
+  

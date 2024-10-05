@@ -1,4 +1,4 @@
-<nav class="bg-success navbar navbar-expand-lg navbar-light" >  <!-- navbar-expand-lg navbar-light bg-light" -->
+<nav class="custom-bg navbar navbar-expand-lg navbar-light" >  <!-- navbar-expand-lg navbar-light bg-light" -->
     <div class="container-fluid">
       <a class="navbar-brand " href="#">QuitQ</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -11,7 +11,7 @@
           </li>
          
           <li class="nav-item">
-            <a class="nav-link" href="#">Become a Seller</a>
+            <a class="nav-link" [routerLink]="['/vendor-login']">Become a Seller</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -19,31 +19,44 @@
             </a>
             
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="/customer/search/?filter=groceries">Groceries</a></li>
-              <li><a class="dropdown-item" href="/customer/search/?filter=home">Home</a></li>
-              <li><a class="dropdown-item" href="/customer/search/?filter=fashion">Fashion</a></li>
-              <li><a class="dropdown-item" href="/customer/search/?filter=electronics">Electronics</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/customer/search']" [queryParams]="{ filter: 'groceries' }">Groceries</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/customer/search']" [queryParams]="{ filter: 'home' }">Home</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/customer/search']" [queryParams]="{ filter: 'fashion' }">Fashion</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/customer/search']" [queryParams]="{ filter: 'electronics' }">Electronics</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Something else here</a></li>
             </ul>
           </li>
           
-          <li class="nav-item">
+          <!-- <li class="nav-item">
             <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-          </li>
+          </li> -->
+           
+            <li class="nav-item" *ngIf="loggedIn">
+              <a class="nav-link" [routerLink]="['/customer/cart']">Cart</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedIn">
+              <a class="nav-link" [routerLink]="['/customer/wishlist']">Wishlist</a>
+            </li>
+            <li class="nav-item" *ngIf="loggedIn">
+              <a class="nav-link" [routerLink]="['/customer/orders']">My Orders</a>
+            </li>
         </ul>
         <form class="d-flex custom-text">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
         <form class="d-flex" *ngIf="loggedIn">
-          <!-- <input class="form-control me-2" type="image" placeholder="this.username" aria-label="Image"> -->
           <button class="btn" type="button" (click)="logout()" placeholder="this.username">Logout</button>
       </form>
-          <form class="d-flex" *ngIf="loggedOut">
-          <!-- <input class="form-control me-2" type="button" placeholder="Login" aria-label="Sign in"> -->
-          <button class="btn" type="submit" (click)="login()">Login</button>
-      </form>
+          <div class="d-flex" *ngIf="!loggedIn">
+          <!-- <a [routerLink]="['/auth/login']">Login</a> -->
+          <!-- <button class="btn" type="submit" (click)="login()">Login</button> -->
+          <a class="btn" routerLink='/auth/login'>Login</a>
+          <!-- <a class="btn" [routerLink]="/auth/login">Login</a> -->
+
+          <!-- <button class="btn" type="submit" (click)="signup()">Signup</button> -->
+          </div>
         
         
 

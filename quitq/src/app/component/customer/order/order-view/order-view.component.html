@@ -1,1 +1,40 @@
-<p>order-view works!</p>
+
+<app-navbar></app-navbar>
+
+<div class="container my-4">
+    <h2>Your Orders</h2>
+    <p>{{ orders.length }} orders placed in past 3 months</p>
+    
+    <div class="order-card mb-4" *ngFor="let order of orders">
+      <div class="order-header d-flex justify-content-between">
+        <div>
+          <p><strong>ORDER PLACED</strong><br>{{ order.orderPlaced }}</p>
+          <p><strong>TOTAL</strong><br>₹{{ order.price }}</p>
+          <p><strong>SHIP TO</strong><br>John Doe</p> <!-- Replace with dynamic customer -->
+        </div>
+        <div>
+          <p><strong>Order # {{ order.id }}</strong></p>
+          <a  class="nav-link" [routerLink]="['/customer/view-order-details']">View order details</a> | 
+          <a href="#" class="text-muted">Invoice</a>
+        </div>
+      </div>
+  
+      <div class="order-body">
+        <p><strong>Arriving {{ order.estimatedDelivery }}</strong></p>
+        <div class="d-flex">
+          <img src="path/to/image.jpg" alt="{{ order.title }}" class="order-image">
+          <div class="ms-3">
+            <p>{{ order.title }}</p>
+            <p>Status: {{ order.status }}</p>
+          </div>
+        </div>
+  
+        <div class="order-actions mt-3">
+          <button class="btn btn-warning">Track Package</button>
+          <button class="btn btn-light">Cancel this delivery</button>
+          <button class="btn btn-light">View or edit order</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
