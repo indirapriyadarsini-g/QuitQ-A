@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SearchService } from '../../../service/search.service';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NgFor, NgIf } from '@angular/common';
+import { HttpParams } from '@angular/common/http';
+import { subscribe } from 'diagnostics_channel';
+import { CustomerService } from '../../../service/customer.service';
 
 
 @Component({
@@ -19,7 +21,7 @@ searchTerm: any;
 
   constructor(
     private route: ActivatedRoute,
-    private searchService: SearchService
+    private customerService: CustomerService
   ) {}
 
   ngOnInit(): void {
@@ -33,16 +35,42 @@ searchTerm: any;
   }
   
 
-  performSearch(keywords: string): void {
-    // Call the search service to fetch products from API
-    this.searchService.searchProducts(keywords).subscribe({
-      next: (response) => {
-        this.products = response; // Assuming the API returns an array of products
-      },
-      error: (error) => {
-        console.error('Error fetching search results:', error);
-      }
-    });
-  }
-}
+//   performSearch(keywords: string): void {
+//     // Call the search service to fetch products from API
+//     this.searchService.searchProducts(keywords).subscribe({
+//       next: (response) => {
+//         this.products = response; // Assuming the API returns an array of products
+//       },
+//       error: (error) => {
+//         console.error('Error fetching search results:', error);
+//       }
+//     });
+//   }
+// }
 
+
+
+performSearch(searchParams: any): void {
+  // Construct query parameters based on what's available
+  let queryParams = new HttpParams();
+
+  if (searchParams.category) {
+    queryParams = queryParams.set('category', searchParams.category);
+  }
+  
+  if (searchParams.prodName) {
+    queryParams = queryParams.set('prodName', searchParams.prodName);
+  }
+
+
+  // this.customerService.searchProducts(queryParams).subscribe({
+  //   next: (data) => {
+  //     this.products = data;
+  //   },
+  //   error: (err) => {
+  //     console.error('Error fetching products', err);
+  //   }
+  // });
+  
+}
+}

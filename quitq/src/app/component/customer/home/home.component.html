@@ -3,33 +3,33 @@
 <div class="container my-5">
     <h2 class="text-center mb-4">Categories</h2>
     <div class="row g-4">
-        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+        <div class="col-md-3" (click)="onCategoryClick('groceries')">
             <div class="card category-card shadow-sm">
-                <img src="category1.jpg" class="card-img-top" alt="Category 1">
+                <img src="groceries.jpg" class="card-img-top" alt="Category 1">
                 <div class="card-body text-center">
                     <h5 class="card-title">Groceries</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+        <div class="col-md-3" (click)="onCategoryClick('home')">
             <div class="card category-card shadow-sm">
-                <img src="category2.jpg" class="card-img-top" alt="Category 2">
+                <img src="home.jpg" class="card-img-top" alt="Category 2">
                 <div class="card-body text-center">
                     <h5 class="card-title">Home</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+        <div class="col-md-3" (click)="onCategoryClick('electronics')">
             <div class="card category-card shadow-sm">
-                <img src="category3.jpg" class="card-img-top" alt="Category 3">
+                <img src="electronics.jpg" class="card-img-top" alt="Category 3">
                 <div class="card-body text-center">
                     <h5 class="card-title">Electronics</h5>
                 </div>
             </div>
         </div>
-        <div class="col-md-3" (click)="onCategoryClick('Groceries')">
+        <div class="col-md-3" (click)="onCategoryClick('fashion')">
             <div class="card category-card shadow-sm">
-                <img src="category4.jpg" class="card-img-top" alt="Category 4">
+                <img src="fashion.jpg" class="card-img-top" alt="Category 4">
                 <div class="card-body text-center">
                     <h5 class="card-title">Fashion</h5>
                 </div>
@@ -44,7 +44,7 @@
             <div class="col-md-3" *ngFor="let product of productList">
                 <div class="card product-card shadow-sm">
                     <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
-                    <img src="img.jpg" class="card-img-top" alt="{{product.title}}">
+                    <img src="mouse.png" class="card-img-top" alt="{{product.title}}">
                     <div class="card-body text-center">
                         <h5 class="card-title">{{product.title}}</h5>
                         <p class="card-text">Out of stock: {{product.outOfStock}}</p>
