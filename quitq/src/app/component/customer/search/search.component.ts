@@ -15,6 +15,7 @@ import { NgFor, NgIf } from '@angular/common';
 export class SearchComponent implements OnInit {
   category: string | null = null;
   products: any[] = [];
+searchTerm: any;
 
   constructor(
     private route: ActivatedRoute,
