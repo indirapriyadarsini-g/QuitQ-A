@@ -33,8 +33,10 @@ onClickCategory(cat: string) {
 
   loggedIn:boolean;
   
-  
+  username:string = localStorage.getItem('username');
   searchTerm = '';
+
+
 
 signup() {
 throw new Error('Method not implemented.');

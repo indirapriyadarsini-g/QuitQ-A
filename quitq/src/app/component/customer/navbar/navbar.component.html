@@ -43,7 +43,7 @@
 
       <div class="d-flex" *ngIf="loggedIn">
         <a class="btn" routerLink="/customer/profile">
-          <span class="pi pi-user"></span>
+          <span class="pi pi-user"> {{username}} </span>
         </a>
         <a class="btn" routerLink="/auth/logout">Logout</a>
       </div>

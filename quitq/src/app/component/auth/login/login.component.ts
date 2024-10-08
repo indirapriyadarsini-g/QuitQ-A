@@ -5,12 +5,13 @@ import { User } from '../../../model/user/user.module';
 import { UserService } from '../../../service/user.service';
 import { NgIf } from '@angular/common';
 import { NavbarComponent } from "../../customer/navbar/navbar.component";
+import { LoginNavbarComponent } from "../login-navbar/login-navbar.component";
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, NavbarComponent],
+  imports: [NgIf, ReactiveFormsModule, NavbarComponent, LoginNavbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

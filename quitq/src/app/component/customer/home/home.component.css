@@ -74,7 +74,7 @@
   
   /* Hover Effect on Category Title */
   .category-card:hover .card-title {
-    color: #007bff;
+    color:green;
   }
   
   /* Product Card Specific Styling */
