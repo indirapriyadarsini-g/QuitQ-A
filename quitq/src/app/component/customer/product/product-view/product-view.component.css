@@ -1,0 +1,18 @@
+.custom-button{
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+img {
+    width: 100%;
+    max-width: 300px; /* Example size */
+    height: auto;
+  }
+  
+.custom-wishlist-button{
+    background-color: #FF1493;
+}
+
+.custom-cart-button{
+    background-color: green;
+}

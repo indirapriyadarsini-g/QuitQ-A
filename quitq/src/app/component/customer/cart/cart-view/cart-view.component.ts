@@ -40,12 +40,25 @@ export class CartViewComponent {
     return this.cartProducts.reduce((sum, product) => sum + product.quantity * product.price, 0);
   }
 
-  removeFromCart(productId: number): void {
-    
-    this.customerService.removeProduct(productId).subscribe(() => {
-      this.cartProducts = this.cartProducts.filter(p => p.id !== productId);
+  removeFromCart(cpId: number): void {
+    this.customerService.removeFromCart(cpId).subscribe({
+      next: (data) => {
+        console.log(data);
+        
+        const index = this.cartProducts.findIndex(item => item.cartProduct.id === cpId);
+        
+        if (index !== -1) {
+          this.cartProducts.splice(index, 1);
+        }
+        
+        console.log('Product removed from cart');
+      },
+      error: (err) => {
+        console.log(err);
+      }
     });
   }
+  
 
   checkout(): void {
    

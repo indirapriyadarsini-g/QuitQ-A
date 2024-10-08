@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common';
     CommonModule
   ]
 })
-export class SearchDtoModule { 
+export class SearchDto { 
   category: string = 'none';
   minDiscount: number = 0;
   prodName: string = "none";

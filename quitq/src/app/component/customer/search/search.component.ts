@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { NgFor, NgIf } from '@angular/common';
-import { HttpParams } from '@angular/common/http';
-import { subscribe } from 'diagnostics_channel';
 import { CustomerService } from '../../../service/customer.service';
+import { Product } from '../../../model/product/product.module';
+import { SearchDto } from '../../../search-dto/search-dto.module';
+import { SearchService } from '../../../service/search.service';
 
 
 @Component({
@@ -15,62 +16,76 @@ import { CustomerService } from '../../../service/customer.service';
   styleUrls: ['./search.component.css']
 })
 export class SearchComponent implements OnInit {
-  category: string | null = null;
-  products: any[] = [];
-searchTerm: any;
+//     next: (data) => {
+//       this.productList = data;
+//       console.log(this.productList);
+//     },
+//     error: (err) => console.log(err)
+//   })
+// }
+
+
+  queryParams: any = {};
 
   constructor(
     private route: ActivatedRoute,
+    private searchService:SearchService,
     private customerService: CustomerService
   ) {}
 
   ngOnInit(): void {
-    this.route.queryParamMap.subscribe(params => {
-      const allParams = params.getAll('param'); // Capture all param values
-      if (allParams.length > 0) {
-        const keywords = allParams.join(','); // Convert array to comma-separated string
-        this.performSearch(keywords);
-      }
-    });
-  }
-  
-
-//   performSearch(keywords: string): void {
-//     // Call the search service to fetch products from API
-//     this.searchService.searchProducts(keywords).subscribe({
-//       next: (response) => {
-//         this.products = response; // Assuming the API returns an array of products
-//       },
-//       error: (error) => {
-//         console.error('Error fetching search results:', error);
-//       }
-//     });
-//   }
-// }
-
-
-
-performSearch(searchParams: any): void {
-  // Construct query parameters based on what's available
-  let queryParams = new HttpParams();
-
-  if (searchParams.category) {
-    queryParams = queryParams.set('category', searchParams.category);
-  }
-  
-  if (searchParams.prodName) {
-    queryParams = queryParams.set('prodName', searchParams.prodName);
+    this.fetchSearchProducts();
+    // this.route.queryParams.subscribe({
+    //   next: (params) => {
+    //     this.queryParams = params;
+    //     this.fetchSearchProducts(this.queryParams);
+    //     console.log(this.queryParams);
+    //   }
+    // });
   }
 
+  productList: Product[]=[];
 
-  // this.customerService.searchProducts(queryParams).subscribe({
-  //   next: (data) => {
-  //     this.products = data;
-  //   },
-  //   error: (err) => {
-  //     console.error('Error fetching products', err);
-  //   }
-  // });
+  // fetchSearchProducts(qp:any){
+  //   // var query = '';
+  //   // for (const [key, value] of Object.entries(qp)) {
+  //   //   query = query+key+'='+value+'&';
+  //   //   console.log(`Key: ${key}, Value: ${value}`);
+  //   // }
+  //   //   query = query.slice(0,-1);
+  //   //   console.log(query);
+  //   const query = qp;
+  //   this.customerService.search(query).subscribe({
+  //     next: (data) => {
+  //       this.productList = data;
+  //       console.log(this.productList);
+  //     },
+  //     error: (err) => console.log(err)
+  //   })
+  // }
+
+  fetchSearchProducts(){
+    this.productList = this.customerService.getProductList();
+  }
   
-}
+  dto:SearchDto;
+
+  searchByCategory(cat: string) {
+    this.dto.category = cat;
+    this.searchService.search(this.dto);
+    }
+
+  searchByStock(yno:string){
+    this.dto.includeOutOfStock = yno;
+    this.searchService.search(this.dto);
+  }
+
+  searchByDiscount(n:number){
+    this.dto.minDiscount = n;
+    this.searchService.search(this.dto);
+  }
+   
+  
+
+
 }

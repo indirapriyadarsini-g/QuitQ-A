@@ -32,11 +32,11 @@ constructor(private customerService: CustomerService) {}
       
     );
   }
-removeFromWishlist(productId: number): void {
+// removeFromWishlist(productId: number): void {
     
-  this.customerService.removeProduct(productId).subscribe(() => {
-    this.wlProducts = this.wlProducts.filter(p => p.id !== productId);
-  });
-}
+//   this.customerService.removeFromWishlist(productId).subscribe(() => {
+//     this.wlProducts = this.wlProducts.filter(p => p.id !== productId);
+//   });
+// }
 
 }

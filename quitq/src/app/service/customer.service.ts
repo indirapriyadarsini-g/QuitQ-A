@@ -2,6 +2,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Product } from '../model/product/product.module';
+import { SearchDto } from '../search-dto/search-dto.module';
+import { ProductWithImageModule } from '../model/product-with-image/product-with-image.module';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +11,28 @@ import { Product } from '../model/product/product.module';
 export class CustomerService {
 
   constructor(private http: HttpClient) { }
+
+  productList:Product[];
+
+  getProductList():Product[]{
+    return this.productList;
+  }
+
+  setProductList(pList:Product[]){
+    this.productList = pList;
+  }
+
+
+  productSelected:ProductWithImageModule;
+
+  getProductSelected(): ProductWithImageModule{
+    return this.productSelected;
+  }
+
+  setProductSelected(prod:ProductWithImageModule){
+    this.productSelected = prod;
+  }
+
 
   registerProfileApi = 'http://localhost:8083/customer/register-profile';
 
@@ -86,14 +110,22 @@ export class CustomerService {
 
   orderNowApi = 'http://localhost:8083/customer/order-now/';
 
-  viewMyOrderApi = 'http://localhost:8083/customer/view-my-order/';
+  viewMyOrderApi = 'http://localhost:8083/customer/view-my-order';
 
   viewOrderDetails = 'http://localhost:8083/customer/view-order-details/';
 
   searchApi = 'http://localhost:8083/customer/search?';
-  
-  search(query:string):Observable<any>{
-    return this.http.get(this.searchApi+query)
+
+  search(dto:SearchDto):Observable<any>{
+    console.log(dto);
+    let params = new HttpParams();
+    for (let key in dto) {
+      if (dto.hasOwnProperty(key) && dto[key] !== undefined && dto[key] !== null) {
+          params = params.append(key, dto[key]);
+      }
+  }
+  return this.http.get(this.searchApi, { params });
+    // return this.http.get(this.searchApi,dto);
   }
 
   addAddressApi = 'http://localhost:8083/customer/add-address';

@@ -1,1 +1,22 @@
-<p>product-view works!</p>
+
+<div class="mt-5"></div>
+<h2 class="text-center mb-4"> Products</h2>
+<div class="row g-4">
+    
+    <div class="col-md-3" *ngFor="let item of productList">
+        <div class="card product-card shadow-sm" (click)="getProductDetails(item)"  [routerLink]="['/customer/product-details']">
+            <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
+            <img src="mouse.png" loading="lazy" class="card-img-top" alt="{{item.product.title}}">
+            <div class="card-body text-center">
+                <h5 class="card-title">{{item.product.title}}</h5>
+                <p class="card-text custom-out-of-stock custom-left-align" *ngIf="item.product.outOfStock">Out of stock</p>
+                <p class="card-text custom-in-stock custom-left-align" *ngIf="!item.product.outOfStock" >In stock</p>
+                <p class="card-text custom-category">Category: {{item.product.c}}</p>
+                <p class="card-text text-muted">Price: {{item.product.price}}</p>
+                <button class=" custom-cart-button custom-button" (click)="addToCart(item.product)">Add to Cart</button>
+                &nbsp; 
+                <button class=" custom-wishlist-button custom-button" (click)="addToWishlist(item.product)">Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+</div>

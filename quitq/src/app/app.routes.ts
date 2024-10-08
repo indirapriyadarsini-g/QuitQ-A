@@ -8,6 +8,8 @@ import { LogoutComponent } from './component/auth/logout/logout.component';
 import { WishlistViewComponent } from './component/customer/wishlist/wishlist-view/wishlist-view.component';
 import { OrderViewComponent } from './component/customer/order/order-view/order-view.component';
 import { OrderDetailsComponent } from './component/customer/order/order-details/order-details.component';
+import { ProductDetailsComponent } from './component/customer/product/product-details/product-details.component';
+import { ProfileComponent } from './component/customer/profile/profile.component';
 
 export const routes: Routes = [
     
@@ -43,13 +45,13 @@ export const routes: Routes = [
     },
     {
         "path" : "customer/view-order-details" , component: OrderDetailsComponent,
+    },
+    {
+        "path" : "customer/view-product-details" , component: ProductDetailsComponent,
+    },
+    {
+        "path" : "customer/profile" , component: ProfileComponent,
     }
-    // {
-    //     "path" : "" , component: ,
-    // }
-    // {
-    //     "path" : "" , component: ,
-    // }
     // {
     //     "path" : "" , component: ,
     // }
