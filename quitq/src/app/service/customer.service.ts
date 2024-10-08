@@ -146,7 +146,7 @@ export class CustomerService {
     })
   }
 
-  viewProductReviewsApi = 'http://localhost:8083/customer/view-product-reviews';
+  viewProductReviewsApi = 'http://localhost:8083/customer/view-product-reviews/';
   
   getProductReviews(pId:number){
     const token = localStorage.getItem('token');

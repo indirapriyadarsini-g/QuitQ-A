@@ -11,7 +11,7 @@ body {
 }
 
 .container {
-  margin-top: 40px;
+  margin-top: 20px;
 }
 
 h1, h3, p {
@@ -27,8 +27,8 @@ h1 {
 
 /* Product category with a curved background */
 .category {
-  background-color: #28a745;
-  color: white;
+  background-color: #d4edda;
+  color: #155724;
   padding: 8px 15px;
   border-radius: 30px;
   display: inline-block;
@@ -94,7 +94,7 @@ h1 {
 }
 
 .actions .btn-secondary:hover {
-  background-color: #5a6268;
+  background-color:black;
 }
 
 .actions .btn + .btn {
@@ -127,51 +127,6 @@ h1 {
   margin-top: 0;
 }
 
-/* Modified Styles */
-.container {
-  margin-top: 20px;
-}
-
-.category {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 10px;
-  border-radius: 10px;
-  display: inline-block;
-}
-
-.price {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-.discount {
-  color: red;
-  font-size: 18px;
-}
-
-.stock {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-.in-stock {
-  color: green;
-}
-
-.out-of-stock {
-  color: red;
-}
-
-.actions {
-  margin-top: 20px;
-}
-
-.actions .btn {
-  font-size: 16px;
-  padding: 10px 20px;
-}
-
 /* Adjustments for the Product Layout */
 .product-card {
   border: 1px solid #ddd;
@@ -179,6 +134,8 @@ h1 {
   padding: 20px;
   background-color: #f8f9fa;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* max-width: 500px;  */
+ 
 }
 
 .image-container {
@@ -196,24 +153,24 @@ h1 {
   border-radius: 8px;
 }
 
-/* Product details */
 .details-container {
-  padding-left: 20px;
+  padding-left: 10px;
 }
 
 .details-container h1 {
-  font-size: 1.8rem;
+  font-size: 1.5rem; /* Reduced title size */
   font-weight: 600;
 }
 
 .details-container .category {
   background-color: #e0ffe0;
-  padding: 10px;
+  padding: 8px;
   border-radius: 5px;
   font-size: 1.2rem;
 }
 
-.details-container .price, .details-container .discount {
+.details-container .price, 
+.details-container .discount {
   font-size: 1.1rem;
   color: #333;
 }
@@ -262,4 +219,12 @@ h1 {
 .reviews p {
   font-size: 1rem;
   color: #555;
+}
+
+.stars {
+  display: inline-flex;
+}
+
+.custom-padding {
+  padding: 20px;
 }

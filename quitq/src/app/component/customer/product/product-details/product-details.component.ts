@@ -4,15 +4,17 @@ import { ProductWithImageModule } from '../../../../model/product-with-image/pro
 import { CustomerService } from '../../../../service/customer.service';
 import { Product } from '../../../../model/product/product.module';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
   standalone: true,
-  imports: [GalleriaModule, NavbarComponent],
+  imports: [GalleriaModule, NavbarComponent,RouterLink],
   templateUrl: './product-details.component.html',
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent implements OnInit{
+
 images: any[];
 responsiveOptions: GalleriaResponsiveOptions[];
 
@@ -21,16 +23,17 @@ handleImageChange($event: Event) {
 throw new Error('Method not implemented.');
 }
 
-pwi: ProductWithImageModule;
+pwi: any;
 product:Product;
 constructor(
-  private customerService: CustomerService
+  private customerService: CustomerService,
+  private router : Router
 ){}
 
   ngOnInit(): void {
     this.pwi = this.customerService.getProductSelected();
     console.log(this.pwi);
-    this.images = this.pwi.imageList;
+    this.images = this.pwi.imList;
     this.product = this.pwi.product;
     this.customerService.getProductReviews(this.pwi.product.id).subscribe({
       next: (data) =>{
@@ -44,5 +47,23 @@ constructor(
     console.log(this.pwi);
   }
 
+  isAddedToCart:boolean = false;
+
+  addToCart(p: Product) {
+    console.log("inside prodDetails ts");
+    if(localStorage.getItem('token')!=null){
+      this.customerService.addToCart(p).subscribe({
+        next: (data) =>{
+          console.log("Added");
+          this.isAddedToCart = true
+        },
+        error: (err) => console.log(err)
+      })
+    }
+    else{
+      this.router.navigateByUrl("/auth/login");
+    }
+    
+    }
 
 }

@@ -5,7 +5,7 @@
     <div class="row">
       <div class="col-md-12">
         <!-- Larger card holding product information -->
-        <div class="card product-card">
+        <div class="card product-card custom-padding">
           <div class="row">
             <!-- Product image card, occupying less space -->
             <div class="col-md-4 image-container">
@@ -25,8 +25,10 @@
               </p>
   
               <!-- Add to Cart and Add to Wishlist buttons aligned to the right -->
-              <div class="actions text-end">
-                <button class="btn btn-success me-2">Add to Cart</button>
+              <div class="actions text-bottom">
+                <button *ngIf="!isAddedToCart" class="btn btn-success me-2" (click)="addToCart(pwi.product)">Add to Cart</button>
+                <button *ngIf="isAddedToCart" class="btn btn-secondary me-2" [routerLink] = "['/customer/cart']">Go to Cart</button>
+                <span *ngIf="isAddedToCart"> Added to cart.</span>
                 <button class="btn btn-secondary">Add to Wishlist</button>
               </div>
             </div>
@@ -40,12 +42,14 @@
       <div class="col-md-12">
         <div class="reviews">
           <h4>Product Reviews</h4>
-          <!-- <div *ngFor="let review of reviews">
-            <div *ngFor="let star of review.stars"> <i class="pi pi-heart-fill"></i> </div>
+          <div *ngFor="let item of reviews">
+            <div  class="stars"  *ngFor="let star of [].constructor(item.stars)"> 
+              <i class="pi pi-heart-fill"></i> 
+            </div>
 
-            <p>{{ review.reviewContent }}</p>
+            <p>{{ item.reviewContent }}</p>
             <hr>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
