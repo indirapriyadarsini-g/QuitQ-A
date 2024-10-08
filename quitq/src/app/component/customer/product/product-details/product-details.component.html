@@ -27,7 +27,7 @@
               <!-- Add to Cart and Add to Wishlist buttons aligned to the right -->
               <div class="actions text-bottom">
                 <button *ngIf="!isAddedToCart" class="btn btn-success me-2" (click)="addToCart(pwi.product)">Add to Cart</button>
-                <button *ngIf="isAddedToCart" class="btn btn-secondary me-2" [routerLink] = "['/customer/cart']">Go to Cart</button>
+                <button *ngIf="isAddedToCart" class="btn btn-secondary me-2" (click)="goneToCart()"  [routerLink] = "['/customer/cart']">Go to Cart</button>
                 <span *ngIf="isAddedToCart"> Added to cart.</span>
                 <button class="btn btn-secondary">Add to Wishlist</button>
               </div>

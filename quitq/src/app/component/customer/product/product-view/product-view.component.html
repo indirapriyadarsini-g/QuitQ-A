@@ -3,7 +3,7 @@
 <h2 class="text-center mb-4"> Products</h2>
 <div class="row g-4">
     
-    <div class="col-md-3" *ngFor="let item of productList">
+    <div class="col-md-3" *ngFor="let item of filteredProds">
         <div class="card product-card shadow-sm" (click)="getProductDetails(item)"  [routerLink]="['/customer/product-details']">
             <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
             <img src="mouse.png" loading="lazy" class="card-img-top" alt="{{item.product.title}}">

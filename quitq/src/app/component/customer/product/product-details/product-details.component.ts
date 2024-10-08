@@ -49,6 +49,11 @@ constructor(
 
   isAddedToCart:boolean = false;
 
+  goneToCart(){
+    this.isAddedToCart = false;
+  }
+
+
   addToCart(p: Product) {
     console.log("inside prodDetails ts");
     if(localStorage.getItem('token')!=null){

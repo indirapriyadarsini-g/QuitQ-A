@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../model/product/product.module';
 import { SearchDto } from '../search-dto/search-dto.module';
 import { ProductWithImageModule } from '../model/product-with-image/product-with-image.module';
@@ -9,6 +9,7 @@ import { ProductWithImageModule } from '../model/product-with-image/product-with
   providedIn: 'root'
 })
 export class CustomerService {
+  
 
   constructor(private http: HttpClient) { }
 
@@ -170,5 +171,23 @@ export class CustomerService {
     });
   }
   
+  // showOnly:any;
 
+  // setCategory(cat:string){
+  //   this.showOnly = cat;
+  // }
+
+  // getCategory(){
+  //   return this.showOnly;
+  // }
+
+
+  private selectedCategory = new BehaviorSubject<string>(null);
+  selectedCategory$ = this.selectedCategory.asObservable(); // This will allow other components to subscribe
+
+  setCategory(category: string) {
+    this.selectedCategory.next(category); // Emit new category
+    console.log("category "+category+" set");
+    console.log(this.selectedCategory);
+  }
 }

@@ -4,6 +4,7 @@ import { Product } from '../../../../model/product/product.module';
 import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ProductWithImageModule } from '../../../../model/product-with-image/product-with-image.module';
+import { combineLatest } from 'rxjs';
 
 @Component({
   selector: 'app-product-view',
@@ -21,9 +22,35 @@ throw new Error('Method not implemented.');
     private router: Router
   ){ }
 
+filteredProds:any;
+
   ngOnInit(): void {
-    this.fetchLatestProducts();
+    // Combine the latest products with the selected category
+    combineLatest([
+      this.customerService.getAllProducts(), // Get all products
+      this.customerService.selectedCategory$ // Get selected category
+    ]).subscribe({
+      next: ([products, category]) => {
+
+        this.productList = products;
+        if (category) {
+          console.log("category identified:"+category);
+          console.log(this.productList[0]);
+          this.filteredProds = this.productList.filter(prod => prod.product.c === category);
+          console.log(this.filteredProds);
+        } else {
+          this.filteredProds = [...this.productList];
+        }
+        // console.log(this.productList,this.filteredProds);
+      },
+      error: (err) => console.log(err)
+    });
   }
+
+  // ngOnInit(): void {
+  //   this.fetchLatestProducts();
+    
+  // }
 
   productList: any[];
 
@@ -33,6 +60,24 @@ throw new Error('Method not implemented.');
       next: (data) => {
         this.productList = data;
         console.log(this.productList);
+        this.customerService.selectedCategory$.subscribe({
+          next: (category) => {
+            console.log("received: "+category);
+          if (category) {
+            console.log("category identified:"+category);
+            this.productList = this.productList.filter(prod => prod.c === category);
+          } else {
+            console.log("not happening ");
+            this.productList = [...this.productList]; // Show all if no category is set
+          }
+        },
+      error: (err) => console.log(err)
+    });
+        // if(this.customerService.showOnly){
+        //   console.log("category set"+this.customerService.getCategory());
+        //   this.productList = this.productList.filter(prod => prod.c == this.customerService.getCategory());
+        //   console.log(this.productList);
+        // }
       },
       error: (err) => {
         console.error('Error fetching latest products', err);

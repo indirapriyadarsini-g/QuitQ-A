@@ -24,9 +24,14 @@ export class HomeComponent{
     dto:SearchDto = new SearchDto();
   
   onCategoryClick(cat: string) {
-    this.dto.category = cat;
+
     console.log("inside cat click");
-    this.searchService.search(this.dto);
+    this.customerService.setCategory(cat);
+    // window.location.reload();
+
+    // this.dto.category = cat;
+    // console.log("inside cat click");
+    // this.searchService.search(this.dto);
   // this.router.navigateByUrl("/search/?param="+cat)
   // this.router.navigate(['/search'], { queryParams: { category: cat } });
 
