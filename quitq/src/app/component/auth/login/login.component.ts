@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { User } from '../../../model/user/user.module';
 import { UserService } from '../../../service/user.service';
 import { NgIf } from '@angular/common';
@@ -11,7 +11,7 @@ import { LoginNavbarComponent } from "../login-navbar/login-navbar.component";
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgIf, ReactiveFormsModule, NavbarComponent, LoginNavbarComponent],
+  imports: [NgIf, RouterLink, ReactiveFormsModule, NavbarComponent, LoginNavbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

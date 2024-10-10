@@ -6,11 +6,12 @@ import { UserService } from '../../../service/user.service';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { User } from '../../../model/user/user.module';
+import { LoginNavbarComponent } from "../login-navbar/login-navbar.component";
 
 @Component({
   selector: 'app-signup',
   standalone: true,
-  imports: [NavbarComponent,ReactiveFormsModule,NgIf],
+  imports: [NavbarComponent, ReactiveFormsModule, NgIf, LoginNavbarComponent],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })

@@ -32,14 +32,17 @@
                              </div>
                         </div>
                          
-                        <input type="submit" class="btn btn-success" [disabled]="loginForm.invalid" value="login"> 
+                        <input type="submit" class="btn btn-success justify-content-around" [disabled]="loginForm.invalid" value="Login"> 
                     </form>
                 
                 </div>
                 <div class="card-footer text-white">
-                    <span>Forgot Password? Reset here </span>
-                    <br />
-                    <span><a href="vendor/sign-up" class="text-white">Sign Up here</a></span>
+                    <!-- <span>Forgot Password? Reset here </span> -->
+                    <br /> <span> New to QuitQ? </span>
+                    <button (click)="signup()" > Signup </button>
+                    &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+                    <button class="btn-secondary" [routerLink] = "['vendor/sign-up']" > Become a Seller </button>
+                    <!-- <span class="btn-secondary" ><a href="vendor/sign-up" class="text-white">Sign Up as Vendor</a></span> -->
                 </div> 
             </div>
         </div>

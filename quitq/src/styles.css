@@ -21,3 +21,7 @@ html,body{
 .custom-left-align{
     text-align: left;
 }
+
+.custom-center-button{
+    align-items: center;
+}

@@ -10,9 +10,15 @@ img {
   }
   
 .custom-wishlist-button{
-    background-color: #FF1493;
+    color:white;
+    border:none;
+    background-color:#64CA8D;
+    
+   
 }
 
 .custom-cart-button{
-    background-color: green;
+    color: white;
+    border:none;
+    background-color: #3B71FE;
 }

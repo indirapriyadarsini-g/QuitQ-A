@@ -1,0 +1,67 @@
+.container {
+    max-width: 600px;
+    margin: auto;
+  }
+  
+  .profile-header {
+    margin-top: 30px;
+  }
+  
+  .profile-image img {
+    border: 2px solid #ddd;
+  }
+  
+  .profile-details {
+    margin-left: 20px;
+  }
+  
+  .profile-actions {
+    margin-top: 40px;
+  }
+  
+  .profile-actions button {
+    width: 120px;
+  }
+  
+  .btn-dark {
+    margin-top: 50px;
+  }
+  
+  .custom-profile-photo{
+    padding-left: 100px;
+    padding-top: 10px;
+  }
+
+  .custom-name{
+    padding-top: 10px;
+    text-align: center;
+
+}
+
+.custom-contact{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+}
+
+.custom-username{
+    font-size: large;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.custom-wishlist-button{
+    background-color: green;
+    color: white;
+    padding: 5px 10px;
+}
+
+.card{
+    border-radius: 10px;
+    background-color:ivory;
+}
+
+.custom-edit-profile{
+    text-align: right;
+    padding-top: 20px;
+    padding-right: 20px;
+    
+}

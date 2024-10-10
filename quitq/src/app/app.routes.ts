@@ -10,6 +10,8 @@ import { OrderViewComponent } from './component/customer/order/order-view/order-
 import { OrderDetailsComponent } from './component/customer/order/order-details/order-details.component';
 import { ProductDetailsComponent } from './component/customer/product/product-details/product-details.component';
 import { ProfileComponent } from './component/customer/profile/profile.component';
+import { ReviewComponent } from './component/customer/review/review.component';
+import { EditProfileComponent } from './component/customer/edit-profile/edit-profile.component';
 
 export const routes: Routes = [
     
@@ -41,7 +43,7 @@ export const routes: Routes = [
         "path" : "customer/wishlist" , component: WishlistViewComponent,
     },
     {
-        "path" : "customer/orders" , component: OrderViewComponent,
+        "path" : "customer/my-orders" , component: OrderViewComponent,
     },
     {
         "path" : "customer/view-order-details" , component: OrderDetailsComponent,
@@ -51,13 +53,13 @@ export const routes: Routes = [
     },
     {
         "path" : "customer/profile" , component: ProfileComponent,
+    },
+    {
+        "path" : "customer/my-reviews" , component: ReviewComponent,
+    },
+    {
+        "path" : "customer/edit-profile" , component: EditProfileComponent,
     }
-    // {
-    //     "path" : "" , component: ,
-    // }
-    // {
-    //     "path" : "" , component: ,
-    // }
     // {
     //     "path" : "" , component: ,
     // }
