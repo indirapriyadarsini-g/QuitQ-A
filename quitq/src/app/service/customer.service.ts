@@ -91,7 +91,7 @@ export class CustomerService {
   }
 
   viewWishlistApi = 'http://localhost:8083/customer/view-my-wishlist';
-  getWishlistProducts(){
+  getWishlistProducts():Observable<any>{
     const token = localStorage.getItem('token');
     return this.http.get(this.viewWishlistApi,{
       headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
@@ -101,19 +101,75 @@ export class CustomerService {
 
   addCountInCartApi = 'http://localhost:8083/customer/add-count-in-cart';
 
+  addCountInCart(cartProduct:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.put(this.addCountInCartApi,cartProduct,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
   subCountInCartApi = 'http://localhost:8083/customer/sub-count-in-cart';
+
+  subCountInCart(cartProduct:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.put(this.subCountInCartApi,cartProduct,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
 
   addCountInOrderApi = 'http://localhost:8083/customer/add-count-in-order';
 
+  addCountInORder(orderProduct:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.put(this.addCountInOrderApi,orderProduct,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
   subCountInOrderApi = 'http://localhost:8083/customer/sub-count-in-order';
+
+  subCountInOrder(orderProduct:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.put(this.subCountInOrderApi,orderProduct,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
 
   orderApi = 'http://localhost:8083/customer/order';
 
+  order():Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.post(this.orderApi,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
   orderNowApi = 'http://localhost:8083/customer/order-now/';
+
+  orderNow(pId:number):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.post(this.orderNowApi+pId,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
 
   viewMyOrderApi = 'http://localhost:8083/customer/view-my-order';
 
-  viewOrderDetails = 'http://localhost:8083/customer/view-order-details/';
+  viewMyOrder(){
+    const token = localStorage.getItem('token');
+    return this.http.get(this.viewMyOrderApi,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
+  viewOrderDetailsApi = 'http://localhost:8083/customer/view-order-details/';
+
+  viewOrderDetails(oId:number){
+    const token = localStorage.getItem('token');
+    return this.http.get(this.viewOrderDetailsApi+oId,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
 
   searchApi = 'http://localhost:8083/customer/search?';
 
@@ -125,13 +181,28 @@ export class CustomerService {
           params = params.append(key, dto[key]);
       }
   }
+  console.log(params);
   return this.http.get(this.searchApi, { params });
     // return this.http.get(this.searchApi,dto);
   }
 
   addAddressApi = 'http://localhost:8083/customer/add-address';
 
+  addAddress(address:any):Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.post(this.addAddressApi,address,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
   viewAddressApi = 'http://localhost:8083/customer/view-address';
+
+  viewAddress():Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.get(this.viewAddressApi,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
 
   addReviewApi = 'http://localhost:8083/customer/add-review/';
 
@@ -171,16 +242,7 @@ export class CustomerService {
     });
   }
   
-  // showOnly:any;
-
-  // setCategory(cat:string){
-  //   this.showOnly = cat;
-  // }
-
-  // getCategory(){
-  //   return this.showOnly;
-  // }
-
+//                          BEHAVIOR SUBJECTS                        //
 
   private selectedCategory = new BehaviorSubject<string>(null);
   selectedCategory$ = this.selectedCategory.asObservable(); // This will allow other components to subscribe

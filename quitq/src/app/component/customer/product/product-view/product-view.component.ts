@@ -127,6 +127,14 @@ filteredProds:any;
     onPageChange(event: PaginatorState) {
         this.first = event.first ?? 0;
         this.rows = event.rows;
+        this.updatePageProducts();
+    }
+
+
+    updatePageProducts(){
+      const start = this.first;
+      const end = this.first + this.rows;
+      this.filteredProds = this.productList.slice(start, end);
     }
   
 }
