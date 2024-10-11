@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { Product } from '../model/product/product.module';
 import { SearchDto } from '../search-dto/search-dto.module';
 import { ProductWithImageModule } from '../model/product-with-image/product-with-image.module';
+import { Customer } from '../model/customer/customer.module';
 
 @Injectable({
   providedIn: 'root'
@@ -244,12 +245,42 @@ export class CustomerService {
   
 //                          BEHAVIOR SUBJECTS                        //
 
+
   private selectedCategory = new BehaviorSubject<string>(null);
-  selectedCategory$ = this.selectedCategory.asObservable(); // This will allow other components to subscribe
+  selectedCategory$ = this.selectedCategory.asObservable(); 
 
   setCategory(category: string) {
     this.selectedCategory.next(category); // Emit new category
     console.log("category "+category+" set");
     console.log(this.selectedCategory);
   }
+
+  private selectedCart = new BehaviorSubject<any>(null);
+  selectedCart$ = this.selectedCart.asObservable();
+
+  setCart(cart:any){
+  this.selectedCart.next(cart);
 }
+
+
+private selectedProfile = new BehaviorSubject<any>(null);
+selectedProfile$ = this.selectedProfile.asObservable();
+
+setProfile(profile:any){
+  this.selectedProfile.next(profile);
+}
+
+private selectedAddress = new BehaviorSubject<any>(null);
+selectedAddress$ = this.selectedAddress.asObservable();
+
+setAddress(address:any){
+  this.selectedAddress.next(address);
+}
+
+
+}
+
+
+
+
+

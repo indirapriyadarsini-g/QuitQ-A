@@ -8,7 +8,7 @@
             <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
             <img src="mouse.png" loading="lazy" class="card-img-top" alt="{{item.product.title}}">
             <div class="card-body text-center">
-                <h5 class="card-title">{{item.product.title}}</h5>
+                <h5 class="card-title text-capitalize">{{item.product.title}}</h5>
                 <p class="card-text custom-out-of-stock custom-left-align" *ngIf="item.product.outOfStock">Out of stock</p>
                 <p class="card-text custom-in-stock custom-left-align" *ngIf="!item.product.outOfStock" >In stock</p>
                 <p class="card-text custom-category">Category: {{item.product.c}}</p>

@@ -1,11 +1,12 @@
 import { NgIf } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { LoginComponent } from '../../auth/login/login.component';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { UserService } from '../../../service/user.service';
 import { FormsModule } from '@angular/forms';
 import { SearchDto } from '../../../search-dto/search-dto.module';
 import { SearchService } from '../../../service/search.service';
+import { CustomerService } from '../../../service/customer.service';
 
 
 
@@ -16,13 +17,21 @@ import { SearchService } from '../../../service/search.service';
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.css'
 })
-export class NavbarComponent {
+export class NavbarComponent implements OnInit{
 
   constructor(private router : Router, 
     private searchService : SearchService,
+    private customerService: CustomerService,
     private userService: UserService) {
     this.loggedIn = userService.isUserAutheticated();
  }
+  ngOnInit(): void {
+    this.customerService.setProfile({
+      "user":{
+        "username":localStorage.getItem('username')
+      }
+    })
+  }
   dto:SearchDto;
 
 onClickCategory(cat: string) {
@@ -44,6 +53,11 @@ throw new Error('Method not implemented.');
 logout() {
   
   this.loggedIn = false;
+  this.customerService.setAddress(null);
+  this.customerService.setCart(null);
+  this.customerService.setCategory(null);
+  this.customerService.setProductSelected(null);
+  this.customerService.setProfile(null);
   this.router.navigateByUrl("/auth/logout")
 }
 

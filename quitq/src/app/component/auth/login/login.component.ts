@@ -6,6 +6,8 @@ import { UserService } from '../../../service/user.service';
 import { NgIf } from '@angular/common';
 import { NavbarComponent } from "../../customer/navbar/navbar.component";
 import { LoginNavbarComponent } from "../login-navbar/login-navbar.component";
+import { CustomerService } from '../../../service/customer.service';
+import { Customer } from '../../../model/customer/customer.module';
 
 
 @Component({
@@ -25,12 +27,15 @@ this.router.navigateByUrl("/auth/signup");
   loginErrMsg:string='';
   user: User; 
 
-  constructor(private userService: UserService, private router: Router){
+  constructor(private userService: UserService, 
+    private customerService: CustomerService,private router: Router){
     this.loginForm = new FormGroup({
       username: new FormControl('',[Validators.required,Validators.email]), 
       password: new FormControl('', Validators.required)
     });
   }
+
+  customer:Customer;
 
   onLogin(){
     
@@ -65,6 +70,25 @@ this.router.navigateByUrl("/auth/signup");
               console.log('in error....')
               this.loginErrMsg = 'Invalid Credentials'; 
             }
+          })
+
+
+          this.customerService.viewProfile().subscribe({
+            next: (data) => {
+              this.customer = data;
+
+              if(this.customer.name == null){
+                this.customer.name = "Not Registered"
+                this.customer.contact = "Not Registered"
+                console.log("after login");
+                console.log(this.customer);
+              }
+
+              this.customerService.setProfile(this.customer);
+
+              console.log(this.customer);
+            },
+            error: (err) => console.log(err)
           })
   }
 

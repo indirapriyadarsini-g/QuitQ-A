@@ -1,0 +1,29 @@
+.custom-spacing{
+    margin-bottom: 20px;
+}
+
+.custom-next{
+    display: flex;
+  justify-content: flex-end; 
+    padding-right: 20px;
+}
+
+.custom-success{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: large;
+    background-color: green;
+    color:white;
+    place-self: center;
+    /* justify-content: center;
+    align-items: center; */
+    text-align: center;
+    
+    /* display: flex; */
+
+   
+}
+
+.custom-success p{
+    margin: 0;
+    padding: 10px 10px 10px 10px;
+}

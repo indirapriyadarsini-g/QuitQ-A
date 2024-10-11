@@ -27,21 +27,22 @@ ngOnInit(): void {
 }
 
 fetchProfileDetails(){
-  this.customerService.viewProfile().subscribe({
-    next: (data) => {
+
+  this.customerService.selectedProfile$.subscribe({
+    next: (data)=>{
       this.customer = data;
-      if(this.customer.name == null){
-        this.customer.name = "Not Registered"
-        this.customer.contact = "Not Registered"
-      }
-      console.log(this.customer);
+      console.log("Fetched profile details:");
+      console.log(data);
     },
-    error: (err) => console.log(err)
+    error: (err)=> console.log(err)
   })
+
+  
 }
 
 
 onEdit() {
+  // this.customerService.setProfile(this.customer);
 this.router.navigateByUrl("/customer/edit-profile");
 }
 
