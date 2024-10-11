@@ -5,11 +5,20 @@ import { NgFor, NgIf } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { ProductWithImageModule } from '../../../../model/product-with-image/product-with-image.module';
 import { combineLatest } from 'rxjs';
+import { PaginatorModule, PaginatorState } from 'primeng/paginator';
+import { SliderModule } from 'primeng/slider';
+
+interface PageEvent {
+  first: number;
+  rows: number;
+  page: number;
+  pageCount: number;
+}
 
 @Component({
   selector: 'app-product-view',
   standalone: true,
-  imports: [NgFor,RouterLink,NgIf],
+  imports: [NgFor,RouterLink,NgIf,PaginatorModule,SliderModule],
   templateUrl: './product-view.component.html',
   styleUrl: './product-view.component.css'
 })
@@ -110,5 +119,14 @@ filteredProds:any;
     this.customerService.setProductSelected(item);
     this.router.navigateByUrl("/customer/view-product-details");
   }
+
+  first: number = 0;
+
+    rows: number = 10;
+
+    onPageChange(event: PaginatorState) {
+        this.first = event.first ?? 0;
+        this.rows = event.rows;
+    }
   
 }
