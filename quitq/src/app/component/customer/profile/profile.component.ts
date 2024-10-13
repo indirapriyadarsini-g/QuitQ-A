@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { Router, RouterLink } from '@angular/router';
 import { CustomerService } from '../../../service/customer.service';
+import { Customer } from '../../../model/customer/customer.module';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class ProfileComponent implements OnInit{
     private router: Router
   ){}
 
-  customer:any;
+  customer:Customer;
   
 ngOnInit(): void {
   this.fetchProfileDetails();
@@ -42,7 +43,8 @@ fetchProfileDetails(){
 
 
 onEdit() {
-  // this.customerService.setProfile(this.customer);
+  this.customerService.setProfile(this.customer);
+  
 this.router.navigateByUrl("/customer/edit-profile");
 }
 

@@ -41,20 +41,26 @@ this.router.navigateByUrl("/auth/signup");
     
     this.userService.getToken( this.loginForm.value.username,  this.loginForm.value.password)
     .subscribe({  
-            next: (data)=>{
-            this.token = data.token; 
+            next: (tdata)=>{
+            this.token = tdata.token; 
             this.userService.getUserDetails(this.token)
             .subscribe({
-              next:(data)=>{
-                this.user = data;
+              next:(udata)=>{
+                this.user = udata;
                 // save username in local storage 
+                console.log(this.token);
                 localStorage.setItem('token',this.token );
                 localStorage.setItem('username',this.user.username );
                 localStorage.setItem('role',this.user.role );
                 switch(this.user.role){
                  
                   case 'ROLE_CUSTOMER':
+                    // this.setCustomerProfile();
+                    // this.setCustomerAddress();
+                    // this.setCustomerCart();
+                    // this.setCustomerWishlist();
                     this.router.navigateByUrl('/customer/home')
+                    
                     break; 
                   default:
                     this.router.navigateByUrl('/page-not-found')
@@ -67,29 +73,59 @@ this.router.navigateByUrl("/auth/signup");
             })
             },
             error:(err)=>{
-              console.log('in error....')
+              console.log(err)
               this.loginErrMsg = 'Invalid Credentials'; 
             }
           })
 
 
-          this.customerService.viewProfile().subscribe({
-            next: (data) => {
-              this.customer = data;
+          
+  }
 
-              if(this.customer.name == null){
-                this.customer.name = "Not Registered"
-                this.customer.contact = "Not Registered"
-                console.log("after login");
-                console.log(this.customer);
-              }
+  setCustomerProfile(){
+    this.customerService.viewProfile().subscribe({
+      next: (prof) => {
+        this.customer = prof;  
+        console.log("initial setup of profile");       
+        this.customerService.setProfile(this.customer);
+        console.log("customer profile after login");
+        console.log(this.customer);
+      },
+      error: (err) => console.log(err)
+    })
+  }
 
-              this.customerService.setProfile(this.customer);
+  setCustomerAddress(){
+    this.customerService.viewAddress().subscribe({
+      next: (add) => {
+        console.log("initial setup of address"); 
+        console.log(add);
+        this.customerService.setAddress(add);
+      },
+      error: (err) => console.log(err)
+    })
+  }
 
-              console.log(this.customer);
-            },
-            error: (err) => console.log(err)
-          })
+  setCustomerCart(){
+    this.customerService.getCartInfo().subscribe({
+      next: (cartdata) => {
+        console.log("initial setup of cart");
+        console.log(cartdata);
+        this.customerService.setCart(cartdata);
+      },
+      error: (err) => console.log(err)
+    })
+  }
+
+  setCustomerWishlist(){
+    this.customerService.getWishlistProducts().subscribe({
+      next: (wdata) => {
+        console.log("initial setup of wishlist");
+        console.log(wdata);
+        this.customerService.setWishlist(wdata);
+      },
+      error: (err) => console.log(err)
+    })
   }
 
 }

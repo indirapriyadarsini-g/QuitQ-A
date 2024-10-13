@@ -1,20 +1,74 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../../service/customer.service';
 import { NavbarComponent } from "../../navbar/navbar.component";
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-order-view',
   standalone: true,
-  imports: [NavbarComponent,NgFor,RouterLink],
+  imports: [NavbarComponent,NgFor,RouterLink,
+    CommonModule
+  ],
+
   templateUrl: './order-view.component.html',
   styleUrl: './order-view.component.css'
 })
-export class OrderViewComponent  {
+export class OrderViewComponent implements OnInit {
+proceedToPayment() {
+throw new Error('Method not implemented.');
+}
+onDecrement(_t11: any) {
+throw new Error('Method not implemented.');
+}
+getGrandTotal(): string|number {
+throw new Error('Method not implemented.');
+}
   orders: any[] = [];
+  orderInfo:any;
+  constructor(private service: CustomerService) {}
+  
+  ngOnInit(): void {
+    this.service.viewMyOrder().subscribe({
+      next: (orderinfodata)=>{
+        console.log("Orderinfo");
+        console.log(orderinfodata);
+        this.orderInfo = orderinfodata;
+        this.service.viewOrderDetails(this.orderInfo.id).subscribe({
+          next: (orderdetailsdata) => {
+            console.log("order details data");
+            console.log(orderdetailsdata);
+          },
+          error: (err) => console.log(err)
+        })
+      },
+      error: (err) => console.log(err)
+    })
+  }
 
-  // constructor(private customerService: CustomerService) {}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // ngOnInit(): void {
   //   // this.fetchOrders();

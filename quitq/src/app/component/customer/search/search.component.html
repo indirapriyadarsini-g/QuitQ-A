@@ -4,7 +4,8 @@
 <div class="d-flex flex-column min-vh-100">
   <!-- Navbar (Optional) -->
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Filters</a>
+   <!-- <br>
+    &nbsp; &nbsp; <h3> Search: </h3> -->
   </nav>
 
   <!-- Main Content -->
@@ -12,47 +13,90 @@
     <div class="row h-100">
       <!-- Sidebar Section -->
       <div class="col-md-3 col-lg-2 sidebar bg-light">
-        <div>
-          <div class="custom-filter-name">Category</div>
-          <label>
-            <input type="radio" name="category" value="groceries" (click)="searchByCategory('groceries')" /> Groceries
-          </label>
-          <label>
-            <input type="radio" name="category" value="electronics" (click)="searchByCategory('electronics')" /> Electronics
-          </label>
-          <label>
-            <input type="radio" name="category" value="fashion" (click)="searchByCategory('fashion')" /> Fashion
-          </label>
-          <label>
-            <input type="radio" name="category" value="home" (click)="searchByCategory('home')" /> Home
-          </label>
-          <hr>
-          <div class="custom-filter-name">Include out of Stock</div>
-          <label>
-            <input type="radio" name="isOutOfStock" value="yes" (click)="searchByStock('yes')" /> Yes
-          </label>
-          <label>
-            <input type="radio" name="isOutOfStock" value="no" (click)="searchByStock('no')" /> No
-          </label>
-          <hr>
-          <div class="custom-filter-name">Filter by Discount</div>
-          <label>
-            <input type="radio" name="minDiscount" value="0" (click)="searchByDiscount(0)" /> 0%
-          </label>
-          <label>
-            <input type="radio" name="minDiscount" value="5" (click)="searchByDiscount(5)" /> 5%
-          </label>
-          <label>
-            <input type="radio" name="minDiscount" value="10" (click)="searchByDiscount(10)" /> 10%
-          </label>
-          <label>
-            <input type="radio" name="minDiscount" value="20" (click)="searchByDiscount(20)" /> 20%
-          </label>
-          <label>
-            <input type="radio" name="minDiscount" value="50" (click)="searchByDiscount(50)" /> 50%
-          </label>
-        </div>
+        <form (ngSubmit)="onSubmit()" #filterForm="ngForm" class="p-3 border rounded">
+          <h4>Filters</h4>
+        
+          <div class="mb-3">
+            <label>Category</label><br>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="category" value="Groceries" [(ngModel)]="selectedCategory" class="form-check-input">
+                Groceries
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="category" value="Electronics" [(ngModel)]="selectedCategory" class="form-check-input">
+                Electronics
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="category" value="Fashion" [(ngModel)]="selectedCategory" class="form-check-input">
+                Fashion
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="category" value="Home" [(ngModel)]="selectedCategory" class="form-check-input">
+                Home
+              </label>
+            </div>
           </div>
+        
+          <div class="mb-3">
+            <label>Include out of Stock</label><br>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="outOfStock" value="Yes" [(ngModel)]="includeOutOfStock" class="form-check-input">
+                Yes
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="outOfStock" value="No" [(ngModel)]="includeOutOfStock" class="form-check-input">
+                No
+              </label>
+            </div>
+          </div>
+        
+          <div class="mb-3">
+            <label>Filter by Discount</label><br>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="discount" value="0" [(ngModel)]="selectedDiscount" class="form-check-input">
+                0%
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="discount" value="5" [(ngModel)]="selectedDiscount" class="form-check-input">
+                5%
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="discount" value="10" [(ngModel)]="selectedDiscount" class="form-check-input">
+                10%
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="discount" value="20" [(ngModel)]="selectedDiscount" class="form-check-input">
+                20%
+              </label>
+            </div>
+            <div>
+              <label class="form-check">
+                <input type="radio" name="discount" value="50" [(ngModel)]="selectedDiscount" class="form-check-input">
+                50%
+              </label>
+            </div>
+          </div>
+        
+          <button type="submit" class="btn btn-primary">Apply Filters</button>
+        </form>
+        
       
       </div>
 
@@ -67,15 +111,24 @@
        <!-- for: <strong>{{ category }}</strong></p> -->
 
     <div class="row">
-      <div class="col-md-3" *ngFor="let product of productList">
-        <div class="card product-card shadow-sm">
-          <!-- <img [src]="product.image" class="card-img-top" [alt]="product.title"> -->
-
-          <div class="card-body text-center">
-            <h5 class="card-title">{{ product.title }}</h5>
-            <p class="card-text">${{ product.price }}</p>
+      <div class="col-md-3" *ngFor="let item of productList">
+        <div class="card product-card shadow-sm" (click)="getProductDetails(item)"  [routerLink]="['/customer/product-details']">
+          <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
+          <div class="custom-image-container">
+              <img [src]="'assets/product/'+ item.imageList[0].imageName " loading="lazy" class="card-img-top" alt="{{item.product.title}}">
           </div>
-        </div>
+          <!-- <img [src]="'assets/product/mouse.png'" loading="lazy" class="card-img-top" alt="{{item.product.title}}"> -->
+          <div class="card-body text-center">
+              <h5 class="card-title text-capitalize">{{item.product.title}}</h5>
+              <p class="card-text custom-out-of-stock custom-left-align" *ngIf="item.product.outOfStock">Out of stock</p>
+              <p class="card-text custom-in-stock custom-left-align" *ngIf="!item.product.outOfStock" >In stock</p>
+              <p class="card-text custom-category">Category: {{item.product.c}}</p>
+              <p class="card-text text-muted">Price: {{item.product.price}}</p>
+              <button class=" custom-cart-button custom-button" (click)="addToCart(item.product)">Add to Cart</button>
+              &nbsp; 
+              <button class=" custom-wishlist-button custom-button" (click)="addToWishlist(item.product)">Add to Wishlist</button>
+          </div>
+      </div>
       </div>
     </div>
 
@@ -90,8 +143,8 @@
   </div>
 
   <!-- Footer (Optional) -->
-  <footer class="bg-light text-center py-3">
-    Footer content here
+  <footer class=" text-center py-3">
+    Search page implemented successfully
   </footer>
 </div>
 

@@ -140,7 +140,7 @@ export class CustomerService {
 
   order():Observable<any>{
     const token = localStorage.getItem('token');
-    return this.http.post(this.orderApi,{
+    return this.http.post(this.orderApi,localStorage.getItem('username'),{
       headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
     })
   }
@@ -172,18 +172,19 @@ export class CustomerService {
     })
   }
 
-  searchApi = 'http://localhost:8083/customer/search?';
+  searchApi = 'http://localhost:8083/customer/search';
 
   search(dto:SearchDto):Observable<any>{
     console.log(dto);
+    // const params='category='+dto.category+'&includeOutOfStock='+dto.includeOutOfStock+'&minDiscount='+dto.minDiscount+'&prodName='+dto.prodName;
     let params = new HttpParams();
     for (let key in dto) {
       if (dto.hasOwnProperty(key) && dto[key] !== undefined && dto[key] !== null) {
           params = params.append(key, dto[key]);
       }
   }
-  console.log(params);
-  return this.http.get(this.searchApi, { params });
+  // console.log(params);
+  return this.http.get(this.searchApi,{params});
     // return this.http.get(this.searchApi,dto);
   }
 
@@ -242,6 +243,15 @@ export class CustomerService {
       headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
     });
   }
+
+
+  getCartInfoApi = 'http://localhost:8083/customer/cart-info'
+  getCartInfo() : Observable<any>{
+    const token = localStorage.getItem('token');
+    return this.http.get(this.getCartInfoApi,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    });
+  }
   
 //                          BEHAVIOR SUBJECTS                        //
 
@@ -275,6 +285,13 @@ selectedAddress$ = this.selectedAddress.asObservable();
 
 setAddress(address:any){
   this.selectedAddress.next(address);
+}
+
+private selectedWishlist = new BehaviorSubject<any>(null);
+selectedWishlist$ = this.selectedWishlist.asObservable();
+
+setWishlist(wishlist:any){
+  this.selectedWishlist.next(wishlist);
 }
 
 

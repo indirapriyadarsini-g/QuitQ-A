@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit{
     private userService: UserService) {
     this.loggedIn = userService.isUserAutheticated();
  }
+ dto:SearchDto=new SearchDto();
   ngOnInit(): void {
     this.customerService.setProfile({
       "user":{
@@ -32,7 +33,7 @@ export class NavbarComponent implements OnInit{
       }
     })
   }
-  dto:SearchDto;
+ 
 
 onClickCategory(cat: string) {
   // this.router.navigate(['/search'], { queryParams: {category: cat } });
@@ -43,7 +44,7 @@ onClickCategory(cat: string) {
   loggedIn:boolean;
   
   username:string = localStorage.getItem('username');
-  searchTerm = '';
+
 
 
 
@@ -68,10 +69,15 @@ login() {
   // this.router.navigate([LoginComponent]);
 }
 
+searchTerm:string="";
+
+
 onSearch(searchTerm:string) {
-  // if (searchTerm) {
-  //   this.router.navigate(['/customer/search'], { queryParams: { keyword: this.searchTerm } });
-  // }
+  if (searchTerm) {
+    this.dto.prodName = searchTerm;
+    this.searchService.setSearch(this.dto);
+    this.router.navigateByUrl("/customer/search");
+  }
   
 }
 }

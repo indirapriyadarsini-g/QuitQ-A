@@ -12,6 +12,7 @@ import { ProductDetailsComponent } from './component/customer/product/product-de
 import { ProfileComponent } from './component/customer/profile/profile.component';
 import { ReviewComponent } from './component/customer/review/review.component';
 import { EditProfileComponent } from './component/customer/edit-profile/edit-profile.component';
+import { PastOrdersComponent } from './component/customer/past-orders/past-orders.component';
 
 export const routes: Routes = [
     
@@ -59,13 +60,13 @@ export const routes: Routes = [
     },
     {
         "path" : "customer/edit-profile" , component: EditProfileComponent,
+    },
+    {
+        "path" : "customer/order" , component: OrderViewComponent,
+    },
+    {
+        "path" : "customer/past-orders" , component: PastOrdersComponent,
     }
-    // {
-    //     "path" : "" , component: ,
-    // }
-    // {
-    //     "path" : "" , component: ,
-    // }
     // {
     //     "path" : "" , component: ,
     // }

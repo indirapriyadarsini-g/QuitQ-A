@@ -40,11 +40,12 @@ filteredProds:any;
       this.customerService.selectedCategory$ // Get selected category
     ]).subscribe({
       next: ([products, category]) => {
-
+        
         this.productList = products;
+        console.log(this.productList);
         if (category) {
           console.log("category identified:"+category);
-          console.log(this.productList[0]);
+         
           this.filteredProds = this.productList.filter(prod => prod.product.c === category);
           console.log(this.filteredProds);
         } else {

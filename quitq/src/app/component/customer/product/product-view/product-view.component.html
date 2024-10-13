@@ -6,7 +6,10 @@
     <div class="col-md-3" *ngFor="let item of filteredProds">
         <div class="card product-card shadow-sm" (click)="getProductDetails(item)"  [routerLink]="['/customer/product-details']">
             <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
-            <img src="mouse.png" loading="lazy" class="card-img-top" alt="{{item.product.title}}">
+            <div class="custom-image-container">
+                <img [src]="'assets/product/'+ item.imageList[0].imageName " loading="lazy" class="card-img-top" alt="{{item.product.title}}">
+            </div>
+            <!-- <img [src]="'assets/product/mouse.png'" loading="lazy" class="card-img-top" alt="{{item.product.title}}"> -->
             <div class="card-body text-center">
                 <h5 class="card-title text-capitalize">{{item.product.title}}</h5>
                 <p class="card-text custom-out-of-stock custom-left-align" *ngIf="item.product.outOfStock">Out of stock</p>

@@ -116,6 +116,7 @@ export class EditProfileComponent implements OnInit{
         // console.log(data);
     //     this.customer = data;
     console.log(this.customer);
+    this.service.setProfile(this.customer);
         this.service.registerProfile(this.customer);
     //   },
     //   error: (err) => console.log(err)
@@ -127,6 +128,7 @@ export class EditProfileComponent implements OnInit{
     //   next: (data) => {
     //     console.log(data);
     //     this.address = data;
+    this.service.setAddress(this.address);
         this.service.addAddress(this.address);
   //     },
   //     error: (err) => console.log(err)

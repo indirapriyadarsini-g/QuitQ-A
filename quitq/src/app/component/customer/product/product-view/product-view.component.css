@@ -22,3 +22,19 @@ img {
     border:none;
     background-color: #3B71FE;
 }
+
+.custom-image-container {
+    width: 100%; /* Set the desired width */
+    height: 250px; /* Set the desired height */
+    overflow: hidden; /* Hide any overflow */
+    position: relative; /* Positioning context for the image */
+}
+
+.custom-image-container img {
+    width: 100%; /* Make the image take up the full width */
+    height: 100%; /* Maintain aspect ratio */
+    /* position: absolute; /* Position the image 
+   /* top: 50%;  Center vertically 
+    left: 50%; /* Center horizontally 
+    transform: translate(-50%, -50%); /* Adjust for centering */
+}
