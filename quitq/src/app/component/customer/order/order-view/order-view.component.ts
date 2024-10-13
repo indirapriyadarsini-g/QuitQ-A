@@ -15,6 +15,9 @@ import { RouterLink } from '@angular/router';
   styleUrl: './order-view.component.css'
 })
 export class OrderViewComponent implements OnInit {
+onIncrement(_t11: any) {
+throw new Error('Method not implemented.');
+}
 proceedToPayment() {
 throw new Error('Method not implemented.');
 }
