@@ -3,6 +3,7 @@ import { NavbarComponent } from '../../navbar/navbar.component';
 import { NgFor, NgIf } from '@angular/common';
 import { OrderServiceService } from '../../../service/order-service.service';
 import { Router } from '@angular/router';
+import { ImageServiceService } from '../../../service/image-service.service';
 
 @Component({
   selector: 'app-return-order',
@@ -22,11 +23,12 @@ export class ReturnOrderComponent {
   first:boolean=false;
   last:boolean=false;
   status:string=""
-  constructor(private orderService:OrderServiceService,private route:Router){
+  constructor(private orderService:OrderServiceService,private route:Router,private imageService:ImageServiceService){
     this.orderService.showReturnProduct().subscribe({
       next:(data)=>{
         this.return=data
         this.return1=data
+this.getImageProduct()
       },
       error:(error)=>{
         console.log(error);
@@ -57,5 +59,29 @@ export class ReturnOrderComponent {
     this.return=this.return.filter(r=>
       r.orderProduct.order.orderPlacedTime.split("-")[1]===dateTime
     )
+  }
+getImageProduct(){
+    for(let r of this.return){
+      console.log("Orders=",r)
+      this.imageService.getOneImageOfProduct(r.orderProduct.product.id).subscribe({
+        next:(data)=>{
+          console.log(data)
+          if(data.length!=0)
+          r.orderProduct.product.imageName="images/"+data[0].imageName;
+        if(data.length===0)
+        {
+          r.orderProduct.product.imageName="https://images-cdn.ubuy.co.in/64d849a391df522441229ece-lenovo-flex-5-14-fhd-touchscreen.jpg"
+        }
+          console.log(r)
+        },
+        error:(error)=>{
+          console.log(error)
+        }
+      })
+      
+  
+    }
+    console.log(this.return);
+    
   }
 }

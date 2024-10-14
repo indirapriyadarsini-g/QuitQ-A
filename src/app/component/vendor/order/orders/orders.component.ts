@@ -5,6 +5,7 @@ import { ProductServiceService } from '../../../service/product-service.service'
 import { OrderServiceService } from '../../../service/order-service.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ImageServiceService } from '../../../service/image-service.service';
 
 @Component({
   selector: 'app-orders',
@@ -19,9 +20,8 @@ order2:any[]=[];
 date:any;
 month:any;
 
-constructor(private productService:ProductServiceService,private route:Router){
+constructor(private productService:ProductServiceService,private route:Router,private imageService:ImageServiceService){
 this.fetchData();
-
 }
 allOrders(){
   this.fetchData();
@@ -32,6 +32,8 @@ fetchData(){
       this.orders=data;
       this.order2=data;
       console.log(this.orders);
+      this.getImageProduct();
+
     },
     error:(error)=>{
       console.log(error)
@@ -96,5 +98,28 @@ monthOrder(){
 onView(o:any){
   console.log(o.id)
 this.route.navigate(["vendor/order-view/",o.id])
+}
+getImageProduct(){
+  for(let p of this.orders){
+    console.log("Orders=",p)
+    this.imageService.getOneImageOfProduct(p.product.id).subscribe({
+      next:(data)=>{
+        if(data.length!=0)
+        p.product.imageName="images/"+data[0].imageName;
+      if(data.length===0)
+      {
+        p.product.imageName="https://images-cdn.ubuy.co.in/64d849a391df522441229ece-lenovo-flex-5-14-fhd-touchscreen.jpg"
+      }
+        console.log(p)
+      },
+      error:(error)=>{
+      console.log(error)
+      }
+    })
+    
+
+  }
+  console.log(this.orders);
+  
 }
 }
