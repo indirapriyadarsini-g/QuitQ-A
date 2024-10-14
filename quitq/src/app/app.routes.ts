@@ -14,6 +14,7 @@ import { ReviewComponent } from './component/customer/review/review.component';
 import { EditProfileComponent } from './component/customer/edit-profile/edit-profile.component';
 import { PastOrdersComponent } from './component/customer/past-orders/past-orders.component';
 import { OrderSummaryComponent } from './component/customer/order/order-summary/order-summary.component';
+import { OrderSuccessfulComponent } from './component/customer/order-successful/order-successful.component';
 
 export const routes: Routes = [
     
@@ -70,10 +71,10 @@ export const routes: Routes = [
     },
     {
         "path" : "customer/order-summary/:orderId" , component: OrderSummaryComponent,
+    },
+    {
+        "path" : "customer/order-successful" , component: OrderSuccessfulComponent,
     }
-    // {
-    //     "path" : "" , component: ,
-    // }
     // {
     //     "path" : "" , component: ,
     // }

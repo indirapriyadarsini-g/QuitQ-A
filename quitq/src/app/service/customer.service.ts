@@ -259,6 +259,19 @@ export class CustomerService {
     return this.http.get(this.viewImageOfProductApi+pId);
   }
 
+
+  viewOrderSummaryApi = 'http://localhost:8083/customer/view-order-summary/';
+
+  viewOrderSummary(oId:number):Observable<any>{
+    return this.http.get(this.viewOrderSummaryApi+oId);
+  }
+
+
+
+
+
+
+
   
 //                          BEHAVIOR SUBJECTS                        //
 

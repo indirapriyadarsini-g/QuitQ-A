@@ -9,6 +9,8 @@ html,body{
 
 .custom-category{
     background-color: #9ACD32;
+    border-radius: 10px;
+   
 }
 
 .custom-out-of-stock{
