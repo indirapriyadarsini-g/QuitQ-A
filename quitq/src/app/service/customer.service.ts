@@ -154,11 +154,11 @@ export class CustomerService {
     })
   }
 
-  viewMyOrderApi = 'http://localhost:8083/customer/view-my-order';
+  viewMyOrdersApi = 'http://localhost:8083/customer/view-my-orders';
 
-  viewMyOrder(){
+  viewMyOrders(){
     const token = localStorage.getItem('token');
-    return this.http.get(this.viewMyOrderApi,{
+    return this.http.get(this.viewMyOrdersApi,{
       headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
     })
   }
@@ -252,6 +252,13 @@ export class CustomerService {
       headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
     });
   }
+
+  viewImageOfProductApi = 'http://localhost:8083/customer/image-of-product/';
+
+  getImage(pId: number):Observable<any>{
+    return this.http.get(this.viewImageOfProductApi+pId);
+  }
+
   
 //                          BEHAVIOR SUBJECTS                        //
 

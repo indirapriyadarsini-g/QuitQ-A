@@ -1,0 +1,27 @@
+.order-card {
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .order-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .order-card img {
+    height: 100px;
+    object-fit: cover;
+  }
+  
+  
+.custom-image-container {
+  width: 100%; /* Set the desired width */
+  height: 250px; /* Set the desired height */
+  overflow: hidden; /* Hide any overflow */
+  position: relative; /* Positioning context for the image */
+}
+
+.custom-image-container img {
+  width: 100%; /* Make the image take up the full width */
+  height: 100%; /* Maintain aspect ratio */
+ 
+}

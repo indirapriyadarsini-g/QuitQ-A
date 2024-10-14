@@ -32,7 +32,7 @@ throw new Error('Method not implemented.');
   constructor(private service: CustomerService) {}
   
   ngOnInit(): void {
-    this.service.viewMyOrder().subscribe({
+    this.service.viewMyOrders().subscribe({
       next: (orderinfodata)=>{
         console.log("Orderinfo");
         console.log(orderinfodata);

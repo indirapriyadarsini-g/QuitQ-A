@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CustomerService } from '../../../../service/customer.service';
 import { NgFor } from '@angular/common';
+import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-order-details',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NavbarComponent],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.css'
 })
 export class OrderDetailsComponent implements OnInit {
 
-  order: any;  
+  op: any;  
 
   constructor(
     private customerService: CustomerService,
@@ -20,32 +21,25 @@ export class OrderDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    console.log("inside oninit");
+    // const opId = Number(this.route.snapshot.paramMap.get('opId'));
+    this.route.paramMap.subscribe({
+      next: params => {
+      const opId = Number(params.get('orderId'));
+      console.log("received opId: ",opId);
+    this.customerService.viewOrderDetails(opId).subscribe({
+      next: (data) => {
+        this.op = data
+        console.log("order product details:");
+        console.log(data);
+      },
+      error: (err) => console.error('Failed to fetch order details', err)
+    });
+      }
+    });
+    
 
-    this.order = {
-      orderId: 40283201402015541,
-      orderDate: '3 October 2024',
-      totalAmount: 239.0,
-      shipTo: 'Indira',
-      shippingStatus: 'Arriving 5 October - 12 October',
-      items: [
-        {
-          productId: 1,
-          title: 'Pikkme Samsung Galaxy M12 / A12 / F12 Smoke Cover',
-          quantity: 1,
-          price: 239.0,
-          imageUrl: 'https://via.placeholder.com/150',
-          status: 'Shipped',
-          returnable: true,
-          exchangeable: true
-        }
-      ]
-    };
-
-    // const orderId = this.route.snapshot.paramMap.get('id');
-    // this.customerService.getOrderDetails(orderId).subscribe({
-    //   next: (data) => this.order = data,
-    //   error: (err) => console.error('Failed to fetch order details', err)
-    // });
+    
   }
 
  

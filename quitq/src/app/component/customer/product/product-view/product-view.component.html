@@ -4,9 +4,9 @@
 <div class="row g-4">
     
     <div class="col-md-3" *ngFor="let item of filteredProds">
-        <div class="card product-card shadow-sm" (click)="getProductDetails(item)"  [routerLink]="['/customer/product-details']">
+        <div class="card product-card shadow-sm"   [routerLink]="['/customer/product-details']">
             <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
-            <div class="custom-image-container">
+            <div class="custom-image-container" (click)="getProductDetails(item)">
                 <img [src]="'assets/product/'+ item.imageList[0].imageName " loading="lazy" class="card-img-top" alt="{{item.product.title}}">
             </div>
             <!-- <img [src]="'assets/product/mouse.png'" loading="lazy" class="card-img-top" alt="{{item.product.title}}"> -->

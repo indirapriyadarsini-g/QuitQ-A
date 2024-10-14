@@ -105,6 +105,7 @@ filteredProds:any;
       this.customerService.addToCart(product).subscribe({
         next: (data) => {
           console.log("added to cart");
+          alert("Added to cart");
         },
         error: (err) =>{
           alert("Product already added.");

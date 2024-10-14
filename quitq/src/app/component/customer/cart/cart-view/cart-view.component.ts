@@ -106,7 +106,7 @@ isRemoved:boolean = false;
       next: (orderdata)=>{
         console.log("Ordered data:");
         console.log(orderdata);
-        this.router.navigateByUrl("/customer/order")
+        this.router.navigate(['customer/order-summary'],orderdata.orderId);
       }
     })
     console.log('Proceeding to checkout...');
