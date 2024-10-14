@@ -26,4 +26,40 @@ export class OrderServiceService {
 
     })
   }
+  getOrderProductStats():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/orderProductStats',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getOrderProductStatsMonth():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/orderProductStats/month',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getNoOfOrderReceivedMonth():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/getNoOfOrdersReceived/month',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getNoOfOrdersReceivedDate():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/getNoOfOrderReceived/date',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getSalesMonth():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/sales/month',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
+  getSalesDate():Observable<any>{
+    return this.http.get<any>('http://localhost:8082/orderproduct/vendor/sale/date',{
+      headers: new HttpHeaders().set('Authorization', 'Bearer ' + localStorage.getItem('token'))
+
+    })
+  }
 }

@@ -4,11 +4,12 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router } from '@angular/router';
 import { UserServiceService } from '../../../service/user-service.service';
 import { User } from '../../../model/user.model';
+import { LoginNavbarComponent } from '../login-navbar/login-navbar.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [NgIf,ReactiveFormsModule],
+  imports: [NgIf,ReactiveFormsModule,LoginNavbarComponent],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })

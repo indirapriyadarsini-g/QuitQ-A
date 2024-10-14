@@ -1,7 +1,9 @@
 <app-navbar></app-navbar>
+
 <div class="conatiner mt-4">
     <div class="row">
       <div class="col-sm-3">
+        <h1>Filters</h1>
         <button type="button" class="btn btn-dark btn-lg mt-4 mb-4 " style="width: 80%;" (click)="AllProduct()">All Products</button>
         <br />
         <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;" (click)="OrderedProduct()">Ordered Products</button>
@@ -10,47 +12,59 @@
         <br />
         <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;" (click)="outOfStock()">Out Of Stock Product</button>
         <br/>
+        <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;" (click)="inStock()">In Stock Product</button>
+        <br/>
+
         <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;" (click)="archiveProduct()">Archive Product</button>
+        <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;">Category</button>
+        <div *ngFor="let c of category" class="myDiv">
+          <input type="radio" id="html" name="fav_language" value={{c}} (change)="onChange(c)">
 
+          <label for="html" class="myText">{{c}}</label>
+
+        </div>
+        <br/>
+
+        
+        
       </div>
-      <div class="col-lg-9">
-        <table class="table" >
-          <thead>
-            <tr>
-              <th scope="col" style="width: 5%">#</th>
-              <th scope="col" style="width: 15%">Tie</th>
-              <th scope="col" style="width: 10%">Price</th>
-              <th scope="col" style="width: 10%">Discount</th>
-              <th scope="col" style="width: 10%">Stock Quantity</th>
-      
-              <th scope="col" style="width: 10%">Status</th>
-      
-              <th scope="col" style="width: 15%">Out Of Stock </th>
-      
-              <th scope="col" class="text-center"> Actions </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let product of products">
-              <th scope="row">{{product.id}}</th>
-              <td>{{product.title}}</td>
-              <td>{{product.price}}</td>
-              <td>{{product.discount}}</td>
-              <td>{{product.quantity}}</td>
-              <td>{{product.status}}</td>
-              <td>{{product.outOfStock}}</td>
-      
-              <td> <button class="btn btn-info bn-small">View</button>
-                &nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-danger bn-small">Archive</button> 
-                  &nbsp;&nbsp;&nbsp;
-                  <button class="btn btn-secondary bn-small">Edit</button> 
+      <div class="col-lg-9 mt-4" >
+        <div class="alert alert-dark" role="alert" *ngIf="hardDeletemsg">
+          {{hardDeletemsg}}
+        </div>
+        <div class="row" *ngFor="let p of products" >
+          <div class="col-lg-12">
+              <div class="card mb-3 border-white" style="max-width: 1040px;">
+                  <div class="row g-0" >
+                    <div class="col-md-4">
+                      <img src={{p.imageName}} class="img-fluid rounded-start" alt="..." >
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">Title:{{p.title}}</h5>
+                        <h5 class="card-title">Price:{{p.price}}</h5>
+                        <h5 class="card-title">Discount:{{p.discount}}</h5>
+                        <h5 class="card-title">Status:{{p.status}}</h5>
 
-              </td>
-            </tr>
-             
-          </tbody>
-        </table>
+                   
+                       <br>
+                        <div class="btn-group">
+                          <button type="button" class="btn btn-primary myButton" (click)="view(p)">View</button>
+                          <button type="button" class="btn btn-secondary myButton" (click)="edit(p)">Edit</button>
+                          <button type="button" class="btn btn-success myButton" *ngIf="p.status==status"  (click)="unarchive(p)">UnArchive</button>
+                          <button type="button" class="btn btn-danger myButton" *ngIf="p.status==status1" (click)="archive(p)">Archive</button>
+                          <button type="button" class="btn btn-secondary myButton"   (click)="review(p)">Review</button>
+                          <button type="button" class="btn btn-dark myButton"   (click)="hardDelete(p)">Hard Delete</button>
+
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+      </div>
+      
         <nav aria-label="Page navigation example ">
             <ul class="pagination justify-content-center">
               <li class="page-item"
@@ -72,5 +86,4 @@
     
     </div>
   </div>
-  
-    
+ 

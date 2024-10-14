@@ -1,0 +1,52 @@
+<app-navbar>
+
+</app-navbar>
+<div class="conatiner mt-4">
+<h1>Your Order Return Detail </h1>
+<div class="row mt-4">
+    <div class="col-sm-4">
+      <div class="card bg-dark text-white" style="height:230px">
+        <div class="card-body">
+          <h5 class="card-title">Return Detail</h5><br>
+          <h6 class="card-subtitle mb-2  text-white">Return Reason;{{return[0].returnReason.reason}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Return Quantity;{{return[0].returnQuantity}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Return Status;{{return[0].returnStatus}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Return Amount;{{return[0].returnAmount}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Refund Amount;{{return[0].refundStatus}}</h6><br>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card bg-dark text-white" style="height:230px">
+        <div class="card-body">
+          <h5 class="card-title">Order Product Detail</h5><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Name:{{return[0].orderProduct.product.title}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Quantity:{{return[0].orderProduct.quantity}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Total Amount:{{return[0].orderProduct.totalAmount}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Discount:{{return[0].orderProduct.discount}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Amount Payable:{{return[0].orderProduct.amountPayable}}</h6><br>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card bg-dark text-white" style="height:230px">
+          <div class="card-body">
+            <h5 class="card-title"> Product Detail</h5><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Status:{{return[0].orderProduct.product.status}}</h6><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Stock Quantity Left :{{return[0].orderProduct.product.quantity}}</h6><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Discount:{{return[0].orderProduct.product.discount}}</h6><br>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

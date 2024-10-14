@@ -1,0 +1,44 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+    <div class="row">
+        <div class="col-sm-3">
+<div class="myPicture">
+
+</div>
+        </div>
+        <div class="col-md-6">
+            <div class="card ">
+                <div class="card-header  myText">
+                    Hello Vendor<br>Your Warehouse Detail!!
+                </div>
+                <div class="card-body myBodyText">
+                   
+                    <div>
+                        <label>Name: </label>
+                        <input class="form-control  bg-white border-white myFont" type="text" [(ngModel)]="name" readonly>
+                    </div>
+                 
+                    <div>
+                        <label>Contact: </label>
+                        <input class="form-control  bg-white border-white myFont" type="text" value="{{contact}}"  [(ngModel)]="contact">
+                    </div>
+                    <div>
+                        <label>City: </label>
+                        <input class="form-control  bg-white border-white myFont" type="text" value="{{city}}"  [(ngModel)]="city">
+                    </div>
+                    <div>
+                        <label>Warehouse Manager Name: </label>
+                        <input class="form-control  bg-white border-white myFont" type="text" value="{{city}}"  [(ngModel)]="city"  [(ngModel)]="manager">
+                    </div>
+                    <div>
+                        <label>Warehouse Manager Name: </label>
+                        <input class="form-control  bg-white border-white myFont" type="text" value="{{city}}"  [(ngModel)]="city"  [(ngModel)]="managerContact">
+                    </div>
+
+                </div>
+               
+              
+            </div>
+        </div>
+    </div>
+</div>

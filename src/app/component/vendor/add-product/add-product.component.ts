@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { NgFor, NgIf } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 import { ProductServiceService } from '../../service/product-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -22,7 +23,8 @@ discount:number=0;
 quantity:number=0;
 successMssg:string="";
 errorMssg:string="";
-constructor(private productService:ProductServiceService){
+id:number=0;
+constructor(private productService:ProductServiceService,private route:Router){
 
   this.token=localStorage.getItem('token')
 this.productService.getAllCategory(this.token).subscribe({
@@ -45,6 +47,8 @@ this.productService.addProduct({
 }).subscribe({
   next:(data)=>{
     console.log("Done");
+    console.log(data);
+    this.id=data.id
     this.successMssg="Product Added Successfully";
     this.errorMssg=undefined;
   },
@@ -58,6 +62,10 @@ this.productService.addProduct({
 resetmsg(){
 this.successMssg=undefined;
 this.errorMssg=undefined
+}
+onAdd(){
+  console.log(this.id)
+  this.route.navigate(['vendor/image-add',this.title]);
 }
 }
 /**[(ngModel)] is part of FormModule componet which bind the 

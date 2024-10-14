@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { OrderServiceService } from '../../../service/order-service.service';
 import { NavbarComponent } from '../../navbar/navbar.component';
 import { NgFor, NgIf } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-exchange-order',
@@ -11,7 +12,8 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrl: './exchange-order.component.css'
 })
 export class ExchangeOrderComponent {
-  products:any[]=[];
+  exchange:any[]=[];
+  exchange1:any[]=[];
   totalPage:number=0;
   pageSize:number=3;
   pageNumber:number=0;
@@ -20,10 +22,11 @@ export class ExchangeOrderComponent {
   first:boolean=false;
   last:boolean=false;
   status:string=""
-  constructor(private orderService:OrderServiceService){
+  constructor(private orderService:OrderServiceService,private route:Router){
     this.orderService.showExchangeProduct().subscribe({
       next:(data)=>{
-        this.products=data
+        this.exchange=data
+        this.exchange1=data;
         console.log(data)
       },
       error:(error)=>{
@@ -40,5 +43,20 @@ export class ExchangeOrderComponent {
   onPageClick(n:number){
     this.pageNumber=n;
   
+  }
+  allExchange(){
+this.exchange=this.exchange1;
+  }
+  exchangeMonth(){
+    this.exchange=this.exchange1;
+    let dateTime=new Date().toISOString().split("-")[1]
+    console.log(this.exchange[0].exchangeInitiatedDate.split("-")[1])
+    this.exchange=this.exchange.filter(e=>
+      e.exchangeInitiatedDate.split("-")[1]===dateTime
+    )
+    console.log(this.exchange)
+  }
+  onView(e:any){
+this.route.navigate(["vendor/exchange-order-detail",e.id])
   }
 }

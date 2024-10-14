@@ -1,8 +1,4 @@
-<nav class="navbar navbar-light bg-success">
-    <div class="container-fluid">
-      <span class="navbar-brand mb-0 h1 text-white">QuitQ</span>
-    </div>
-  </nav>
+<app-login-navbar></app-login-navbar>
 <div class="conatiner" style="margin-top: 100px;">
     <div class="row">
         <div class="col sm-3"></div>
@@ -13,6 +9,11 @@
                 </div>
                 <div class="card-body text-white">
                     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+                    
+                       
+                         <div class="alert alert-danger" role="alert" *ngIf="loginErrMssg">
+                           {{loginErrMssg}}
+                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email address</label>
                             <input type="email" class="form-control" aria-describedby="emailHelp" formControlName="username" >
@@ -37,7 +38,7 @@
                 <div class="card-footer text-white">
                     <span>Forgot Password? Reset here </span>
                     <br />
-                    <span>Sign Up here</span>
+                    <span><a href="vendor/sign-up" class="text-white">Sign Up here</a></span>
                 </div> 
             </div>
         </div>

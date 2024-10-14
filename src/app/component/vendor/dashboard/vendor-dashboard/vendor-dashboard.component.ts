@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-dashboard',
@@ -9,5 +10,16 @@ import { NavbarComponent } from "../../navbar/navbar.component";
   styleUrl: './vendor-dashboard.component.css'
 })
 export class VendorDashboardComponent {
+  constructor(private route:Router){}
+productStats(){
+  this.route.navigateByUrl("vendor/product-stats")
+}
+categoryStats(){
+  this.route.navigateByUrl("vendor/category-stats")
 
+}
+orderStats(){
+  this.route.navigateByUrl("vendor/order-stats")
+
+}
 }

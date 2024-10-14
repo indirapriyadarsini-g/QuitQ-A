@@ -44,6 +44,11 @@
                 </div>
                 <div class="card-footer myFooter">
                     <button class="bg-dark text-white" (click)="onClick()">Add Schedule</button>
+
+                </div>
+                <div class="card-footer myFooter">
+                    <button class="bg-dark text-white" *ngIf="successMssg" (click)="onAdd()">Add Image</button>
+
                 </div>
             </div>
         </div>

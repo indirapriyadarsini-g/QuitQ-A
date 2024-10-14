@@ -1,0 +1,150 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+    <div class="row">
+        <h1 class="myHeading text-success">Top Selling Product</h1>
+
+        <div class="col-sm-3">
+            <div class="row myRow">
+           
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange('MONTH')">
+                    <label for="html">MONTH</label><br>
+                </div>
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange('YEAR')">
+                    <label for="html">YEAR</label><br>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 25%">Title</th>
+                    <th scope="col" style="width: 25%">Price</th>
+                    <th scope="col" style="width: 25%">Discount</th>
+                    <th scope="col" style="width: 25%" class="text-center">Quantity Sold </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of products" >
+                    <th scope="row">{{p.id}}</th>
+                    <td>{{p.title}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.discount}}</td>
+                    <td>{{p.noOfQuantitySold}}
+                    </td>
+                  </tr>
+                   
+                </tbody>
+              </table>
+             
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <h1 class="myHeading text-success">Most Ordered Product</h1>
+
+        <div class="col-sm-3">
+            <div class="row myRow">
+           
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange1('MONTH')">
+                    <label for="html">MONTH</label><br>
+                </div>
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange1('YEAR')">
+                    <label for="html">YEAR</label><br>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 25%">Title</th>
+                    <th scope="col" style="width: 25%">Price</th>
+                    <th scope="col" style="width: 25%">Discount</th>
+                    <th scope="col" style="width: 25%" class="text-center">Order Freq </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of orderedProducts" >
+                    <th scope="row">{{p.id}}</th>
+                    <td>{{p.title}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.discount}}</td>
+                    <td>{{p.noOfTimeOrdered}}
+                    </td>
+                  </tr>
+                   
+                </tbody>
+              </table>
+             
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+    <div class="row">
+        <h1 class="myHeading text-success">Product Statistics</h1>
+
+        <div class="col-sm-3">
+            <div class="row myRow">
+           
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange3('MONTH')">
+                    <label for="html">MONTH</label><br>
+                </div>
+                <div class="col-sm-3 myCol">
+                    <input type="radio" id="html" name="fav_language" value="HTML" (change)="onChange3('YEAR')">
+                    <label for="html">YEAR</label><br>
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col" style="width: 5%">#</th>
+                    <th scope="col" style="width: 25%">Title</th>
+                    <th scope="col" style="width: 25%">Price</th>
+                    <th scope="col" style="width: 25%">Discount</th>
+                    <th scope="col" style="width: 25%" class="text-center">Status </th>
+                    <th scope="col" style="width: 25%" class="text-center">Quantity Sold </th>
+                    <th scope="col" style="width: 25%" class="text-center">Order Freq</th>
+                    <th scope="col" style="width: 25%" class="text-center">Average Rating</th>
+
+
+
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let p of productStats" >
+                    <th scope="row">{{p.id}}</th>
+                    <td>{{p.title}}</td>
+                    <td>{{p.price}}</td>
+                    <td>{{p.discount}}</td>
+                    <td>{{p.statuts}}
+                    </td>
+                    <td>{{p.noOfQuantitySold}}
+                    </td>
+                    <td>{{p.noOfTimesOrdered}}
+                    </td>
+                    <td>{{p.averageRating}}
+                    </td>
+                  </tr>
+                   
+                </tbody>
+              </table>
+             
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
