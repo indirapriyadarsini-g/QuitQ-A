@@ -1,0 +1,48 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+<h1>Your Order Detail </h1>
+<div class="row mt-4">
+    <div class="col-sm-4">
+      <div class="card bg-dark text-white" style="height:230px">
+        <div class="card-body">
+          <h5 class="card-title">Order Detail</h5><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Id;{{order[0].id}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Status;{{order[0].order.status}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Order Placed Time;{{order[0].order.orderPlacedTime}}</h6><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Order Deliver Time:{{order[0].order.orderDeliveredTime}}</h6><br>
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="card bg-dark text-white" style="height:230px">
+        <div class="card-body">
+          <h5 class="card-title">Order Product Detail</h5><br>
+          <h6 class="card-subtitle mb-2  text-white">Order Product Name:{{order[0].product.title}}</h6><br>
+          <h6 class="card-subtitle mb-2 text-white">Order Product Quantity:{{order[0].quantity}}</h6><br>
+          <h6 class="card-subtitle mb-2 text-white">Order Product Total Amount:{{order[0].totalAmount}}</h6><br>
+          <h6 class="card-subtitle mb-2 text-white">Order Product Discount:{{order[0].discount}}</h6><br>
+          <h6 class="card-subtitle mb-2 text-white">Order Product Amount Payable:{{order[0].amountPayable}}</h6><br>
+
+
+
+
+
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card bg-dark text-white" style="height:230px">
+          <div class="card-body">
+            <h5 class="card-title"> Product Detail</h5><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Status:{{order[0].product.status}}</h6><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Stock Quantity Left :{{order[0].product.quantity}}</h6><br>
+            <h6 class="card-subtitle mb-2  text-white">Product Discount:{{order[0].product.discount}}</h6><br>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>

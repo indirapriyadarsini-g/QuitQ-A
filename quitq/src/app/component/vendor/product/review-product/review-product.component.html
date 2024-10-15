@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+    <div class="row">
+        <div class="col-sm-3">
+
+        </div>
+        <div class="col-md-6 divCon">
+<h1>Review Of Your Product</h1>
+<div class="row">
+    <div class="col-lg-12 mt-4" let *ngFor="let r of review">
+        <div class="card" style="width: 36rem;">
+            <div class="conatiner" >
+                <img src="https://media.istockphoto.com/id/1295967422/vector/five-point-star-vector-icon-isolated-gold-star-rating-flat-symbol-vector.jpg?s=612x612&w=0&k=20&c=f9kJnuy_7JluRDG2ZgIPAkI33173kVwOuCBXe-z-w6Y=" class="card-img-top" alt="..." id="img" *ngFor="let e of [].constructor(r.stars);">
+                
+
+            </div>
+
+            <div class="card-body">
+              <h5 class="card-title">Review</h5>
+              <p class="card-text">{{r.reviewContent}}</p>
+            </div>
+          </div>
+          
+    </div>
+</div>
+        </div>
+        <div class="col-sm-3">
+
+        </div>
+    </div>
+</div>

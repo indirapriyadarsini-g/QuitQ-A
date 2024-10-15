@@ -1,0 +1,47 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+  <div class="row">
+    <div class="col-sm-3">
+<h1>Filters:</h1>
+<button type="button" class="btn btn-dark btn-lg mt-4 mb-4 " style="width: 80%;" (click)="allExchange()">All Exchange Orders</button>
+        <br />
+        <button type="button" class="btn btn-dark btn-lg mb-4" style="width: 80%;" (click)="exchangeMonth()">Orders Exchanged This Month</button>
+        <br />      
+    </div>
+    <div class="col-lg-9 mt-4" >
+      <div class="row"  >
+        <div class="col-lg-12" *ngFor="let e of exchange">
+            <div class="card mb-3 border-white" style="max-width: 1040px;">
+                <div class="row g-0" >
+                  <div class="col-md-4">
+                    <img src={{e.orderProduct.product.imageName}} class="img-fluid rounded-start" alt="..." >
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">Order Id::{{e.orderProduct.order.id}}</h5>
+                      <h5 class="card-title">Order Placed Date:{{e.orderProduct.order.orderPlacedTime}}</h5>
+
+                      <h5 class="card-title">Ordered Product:{{e.orderProduct.product.title}}</h5>
+
+                     <br>
+                      <div class="btn-group">
+                        <button type="button" class="btn btn-primary bg-dark" (click)="onView(e)">View Details</button>
+                       
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+   
+
+    </div>
+  
+  </div>
+</div>
+
+  

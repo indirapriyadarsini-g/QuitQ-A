@@ -1,0 +1,30 @@
+.myBtn{
+margin-top: 80px;
+}
+.myText{
+    text-align: center;
+    color:green;
+    font-family:'Times New Roman', Times, serif;
+    font-size: larger;
+    font-weight:500;
+}
+.myFooter{
+    align-self: center;
+    justify-content: center;
+}
+.myBodyText{
+    color:black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: larger;
+    font-weight:500;
+}
+.myLeftCard{
+    margin-right:200px;
+    margin-top:200px;
+}
+.btn2{
+    margin-left:20px;
+}
+.checkBox{
+    width:5%
+}

@@ -1,0 +1,17 @@
+.myText{
+    text-align: center;
+    color:green;
+    font-family:'Times New Roman', Times, serif;
+    font-size:xx-large;
+    font-weight:bolder;
+}
+.myFooter{
+    align-self: center;
+    justify-content: center;
+}
+.myBodyText{
+    color:black;
+    font-family:'Times New Roman', Times, serif;
+    font-size: larger;
+    font-weight:500;
+}
