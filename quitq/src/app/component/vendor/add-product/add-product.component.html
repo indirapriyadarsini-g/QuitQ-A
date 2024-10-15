@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-md-6">
+            <div class="card ">
+                <div class="card-header  myText">
+                    Hello Vendor<br>Add Your  Product
+                </div>
+                <div class="card-body myBodyText">
+                    <div class="alert alert-success" role="alert" *ngIf="successMssg">
+                        {{successMssg}}
+                     </div>
+                   
+                     <div class="alert alert-danger" role="alert" *ngIf="errorMssg">
+                       {{errorMssg}}
+                     </div>
+                    <div>
+                        <label>Title: </label>
+                        <input class="form-control" type="text" [(ngModel)]="title"  (change)="resetmsg()">
+                    </div>
+                    <div>
+                        <label>Price: </label>
+                        <input class="form-control" type="number"  [(ngModel)]="price"  (change)="resetmsg()">
+                    </div>
+                    <div>
+                        <label>Discount: </label>
+                        <input class="form-control" type="number"  [(ngModel)]="discount"  (change)="resetmsg()">
+                    </div>
+                    <div>
+                        <label>Quantity: </label>
+                        <input class="form-control" type="number"  [(ngModel)]="quantity"  (change)="resetmsg()">
+                    </div>
+                    <div>
+                        <label>Category: </label>
+                        <select class="form-control" type="number"  [(ngModel)]="c"  (change)="resetmsg()">
+                            <option *ngFor="let c of category" value="{{c}}">
+                                {{c}}
+
+                            </option>
+                            </select>
+                    </div>
+
+                </div>
+                <div class="card-footer myFooter">
+                    <button class="bg-dark text-white" (click)="onClick()">Add Schedule</button>
+
+                </div>
+                <div class="card-footer myFooter">
+                    <button class="bg-dark text-white" *ngIf="successMssg" (click)="onAdd()">Add Image</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<app-navbar></app-navbar>
+<div class="conatiner mt-4">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-md-6">
+            <div class="card ">
+                <div class="card-header  myText">
+                    Hello Vendor<br>Add Your  Product Images
+                </div>
+                <div class="card-body myBodyText">
+                    <div class="alert alert-success" role="alert" *ngIf="successMssg">
+                        {{successMssg}}
+                     </div>
+                   
+                     <div class="alert alert-danger" role="alert" *ngIf="errorMssg">
+                       {{errorMssg}}
+                     </div>
+                     <div>
+                        <label>Image For Product: </label>
+                        <select class="form-control" type="text"  [(ngModel)]="product"  (change)="productDetail()" >
+                            <option *ngFor="let p of products" value="{{p.title}}">
+                                {{p.title}}
+
+                            </option>
+                            </select>
+                    </div>
+                    <div>
+                        <label>Image Preview: </label>
+                        <div class="myPicture">
+<img src={{imgPath}} alt="image not foound" id="img" >
+                        </div>
+                    </div>
+                    <div>
+                        <label>Image: </label>
+                        <input class="form-control" type="file"   (change)="onChange($event)">
+                    </div>
+                    <div>
+                        <label>Cover: </label>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <input class="form-control checkBox" type="checkbox"  [(ngModel)]="cover"  (change)="resetmsg()">
+                                <span *ngIf="cover==true" class="span">Added as Cover</span>
+                                <span *ngIf="cover==false" class="span">Removed as cover</span>
+                            </div>
+                        </div>
+                      
+                    </div>
+                   
+                  
+
+                </div>
+                <div class="card-footer myFooter">
+                    <button class="bg-dark text-white" (click)="onClick()">Add Image</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

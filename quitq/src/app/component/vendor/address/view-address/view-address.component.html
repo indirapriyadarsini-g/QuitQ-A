@@ -1,0 +1,106 @@
+<app-navbar></app-navbar>
+<div class="conatiner">
+    <div class="row">
+        <div class="col-md-6">
+<h1>Your Address</h1>
+<div class="conatainer mt-4">
+    <div class="row" *ngFor="let a of addressess">
+<div class="col-lg-12">
+    <div class="card mb-3 border-white" style="max-width: 440px;">
+        <div class="row g-0" >
+          
+            
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title">State:{{a.state}}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">City:{{a.city}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">StreetDetails:{{a.streetdetails}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Landmark:{{a.landmark}}</h6>
+    <h6 class="card-subtitle mb-2 text-muted">Pincode:{{a.pincode}}</h6>
+
+    
+
+            </div>
+          </div>
+          <div class="col-md-4 myCard" style:height="200px;">
+            <button class="bg-success text-white myBtn"   (click)="onSelect(a)">Select Address</button>
+
+          </div>
+         
+        </div>
+      </div>
+</div>
+    </div>
+</div>
+<div class>
+    <button class="bg-dark text-white" >Delete All</button>
+</div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mt-4">
+                <div class="card-header  myText">
+                    Hello Vendor<br>Update Your  Address
+                </div>
+                <div class="card-body myBodyText">
+                    <div class="alert alert-success" role="alert" *ngIf="successMssg">
+                        {{successMssg}}
+                     </div>
+                   
+                     <div class="alert alert-danger" role="alert" *ngIf="errorMssg">
+                       {{errorMssg}}
+                     </div>
+                     <div>
+                        <label>State: </label>
+                        <select class="form-control" type="text"  [(ngModel)]="states"  (change)="onChange(states)"  readonly="true">
+                            <option *ngFor="let states of state" value="{{states}}">
+                                {{states}}
+
+                            </option>
+                            </select>
+                    </div>
+                    <div>
+                        <label>City: </label>
+                        <input class="form-control" type="text"  [(ngModel)]="city"  (change)="resetmsg()" readonly="true">
+
+                        
+                    </div>
+                   
+                    <div>
+                        <label>Ladnmark: </label>
+                        <input class="form-control" type="text"  [(ngModel)]="landmark"  (change)="resetmsg()" readonly="true">
+                    </div>
+                   
+                    <div>
+                        <label>Pincode: </label>
+                        <input class="form-control" type="number"  [(ngModel)]="pincode"  (change)="resetmsg()"  readonly="true">
+                    </div>
+                    <div>
+                        <label>Street Details </label>
+                        <input class="form-control" type="text"  [(ngModel)]="streetDetails"  (change)="resetmsg()"  readonly="true">
+                    </div>
+                    <label>Cover: </label>
+                    <div class="row">
+                        <div class="col-lg-12">
+                           
+                            <span *ngIf="cover==true" class="span">Added as Cover</span>
+                            <span *ngIf="cover==false" class="span">Removed as cover</span>
+                        </div>
+                    </div>
+                 
+
+                </div>
+                <div class="card-footer myFooter">
+                    <button class="bg-dark text-white" (click)="onAdd()">Add Address</button>
+                    <button class="bg-dark text-white btn2"  *ngIf="cover===false"(click)="onUpdate()">Update Address</button>
+
+                    <button class="bg-dark text-white btn2" (click)="onDelete()">Delete Address</button>
+
+
+                </div>
+              
+            </div>
+        </div>
+    </div>
+   
+</div>
+    
