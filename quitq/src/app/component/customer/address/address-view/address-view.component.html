@@ -1,0 +1,79 @@
+<app-navbar></app-navbar>
+
+<div class="container address-container">
+  <h2 class="text-center">Address</h2>
+
+  <div class="row mt-4">
+    <div class="col-md-6">
+ 
+      <h4>Delivery Address</h4>
+      <br>
+      <div class="card address-card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Street:</h5>
+          <div class=" card-text custom-address md-3">
+            {{ street }}
+          </div>
+          <h5 class="card-title">Landmark:</h5>
+          <div class=" card-text custom-address md-3">
+            {{ landmark }}
+          </div>
+          <h5 class="card-title">City:</h5>
+          <div class=" card-text custom-address md-3">
+            {{ city }}
+          </div>
+          <h5 class="card-title">State:</h5>
+          <div class=" card-text custom-address md-3">
+            {{ state }}
+          </div>
+          <h5 class="card-title">Pincode:</h5>
+          <div class=" card-text custom-address text-success md-3">
+            {{ pincode }}
+          </div>
+          
+        </div>
+      </div>
+      <br>
+    <div class="alert alert-success" *ngIf="isSubmit">
+      Address added!
+    </div>
+    <br>
+    <button class="btn btn-primary" [routerLink]="['/customer/profile']"> Back to Profile </button>
+          
+    </div>
+
+
+    <div class="col-md-6">
+      <!-- Address Form -->
+      <h4>Add/Edit Address</h4>
+      <div class="card address-card">
+        <div class="card-body">
+          <h5 class="card-title">Home</h5>
+          <form (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="street" class="form-label">Enter Street:</label>
+              <input type="text" class="form-control" id="street" placeholder="xxx xxx" [(ngModel)]="street" name="street">
+            </div>
+            <div class="mb-3">
+              <label for="landmark" class="form-label">Enter Landmark:</label>
+              <input type="text" class="form-control" id="landmark" placeholder="xxx xxx" [(ngModel)]="landmark" name="landmark">
+            </div>
+            <div class="mb-3">
+              <label for="city" class="form-label">Enter City:</label>
+              <input type="text" class="form-control" id="city" placeholder="xxx xxx" [(ngModel)]="city" name="city">
+            </div>
+            <div class="mb-3">
+              <label for="state" class="form-label">Enter State:</label>
+              <input type="text" class="form-control" id="state" placeholder="xxx xxx" [(ngModel)]="state" name="state">
+            </div>
+            <div class="mb-3">
+              <label for="pincode" class="form-label">Enter Pincode:</label>
+              <input type="text" class="form-control" id="pincode" placeholder="xxx xxx" [(ngModel)]="pincode" name="pincode">
+            </div>
+            <button type="submit" class="btn btn-dark">Add Address</button>
+            &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+            </form>
+        </div>
+      </div>
+    </div>
+    

@@ -1,0 +1,60 @@
+
+<app-navbar></app-navbar>
+<div class="container mt-5">
+  <h2 class="mb-4">Your Wishlist:</h2>
+
+  <div *ngIf="isRemoved" class="alert alert-success">
+    Removed from wishlist
+  </div>
+
+  <div *ngIf="wlProducts.length > 0; else emptyWl">
+    
+    <div class="row">
+      <div class="col-md-8">
+        <div *ngFor="let item of wlProducts" class="card mb-3">
+          <div class="row g-0 custom-height">
+            <div class="col-md-4 custom-height">
+              <img [src]="'assets/product/'[item.imList[0]]" class="img-fluid rounded-start custom-height" alt="prodImage">
+              <!-- <img [src]="item.product.imageUrl" class="img-fluid rounded-start" alt="Product Image"> -->
+            </div>
+            <div class="col-md-8 custom-height">
+              <div class="card-body custom-height">
+                <h5 class="card-title text-capitalize">{{ item.wishlistProduct.product.title }}</h5>
+                <p class="card-text">
+                  Quantity: {{ item.wishlistProduct.productQuantity }} <br>
+                  Price: Rs.{{ item.wishlistProduct.amountPayable }}
+                </p>
+                <div (click)="removeFromWishlist(item.wishlistProduct.id)">
+                  <button class="btn btn-success btn-sm justify-content-end" (click)="moveToCart(item.wishlistProduct.product)">Move to Cart</button>
+               
+                </div>
+                 &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn btn-danger btn-sm" (click)="removeFromWishlist(item.wishlistProduct.id)">Remove</button>
+                
+               
+              
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      </div>
+    </div>
+  
+    <ng-template #emptyWl>
+      <p>Your wishlist is empty!</p>
+    </ng-template>
+  </div>
+  

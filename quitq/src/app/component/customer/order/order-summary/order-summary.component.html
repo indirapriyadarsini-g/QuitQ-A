@@ -1,0 +1,61 @@
+<app-navbar></app-navbar>
+<br>
+<h2 class="text-center mb-4">Order Details</h2>
+<div class="row container order-details mt-5">
+  <div class="col-md-6">
+    
+    
+    <div class="order-summary mb-4">
+      <h4>Order Summary</h4>
+      <p><strong>Order Number:</strong> {{ sdto.order.id }}</p>
+      <p><strong>Date Placed:</strong> {{ sdto.order.orderPlacedTime }}</p>
+      <p><strong>Total Amount:</strong> ₹{{ sdto.order.orderAmount }}</p>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class=" shipping-info mb-4">
+      <h4>Shipping Information</h4>
+      <p><strong>Street details:</strong> {{ address.streetdetails }}</p>
+      <p><strong>Landmark:</strong> {{ address.landmark }}</p>
+      <p><strong>City:</strong> {{ address.city }}</p> 
+      <p><strong>State:</strong> {{ address.state }}</p>
+      <p><strong>Pincode:</strong> {{ address.pincode }}</p>
+      
+    </div>
+  </div>
+   
+    <div class="order-items mb-4">
+      <h4>Items in your order</h4>
+      
+      <div *ngFor="let item of sdto.opwiList" class="order-item card shadow-sm mb-3">
+        <div class="row g-0">
+          <div class="col-md-2">
+            <img [src]="item.imageList[0]" class="img-fluid rounded-start" alt="{{ item.orderProduct.product.title }}">
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <h5 class="card-title text-capitalize">{{ item.orderProduct.product.title }}</h5>
+              <p class="card-text ">Category: {{ item.orderProduct.product.c }}</p>
+              <p class="card-text">Quantity: {{ item.orderProduct.quantity }}</p>
+              <p class="card-text text-muted">Price: ₹{{ item.orderProduct.amountPayable }}</p>
+              <p class="card-text text-muted">Order Status: {{ item.orderProduct.order.status }}</p>
+            </div>
+          </div>
+          <div class="col-md-2 text-end actions">
+            <br>
+            <button class="btn btn-outline-primary  mb-3" (click)="reviewItem(item.id)">Review</button>
+            <br>
+            <button class="btn btn-outline-secondary  mb-3" (click)="returnItem(item.id)">Return</button>
+            <br>
+            <button class="btn btn-outline-warning " (click)="exchangeItem(item.id)">Exchange</button>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+    </div>
+  
+    <div class="text-center mt-4">
+      <button class="btn btn-primary" (click)="makePayment()">Make Payment</button>
+    </div>
+  </div>
+  

@@ -1,0 +1,57 @@
+<app-navbar></app-navbar>
+
+
+
+<div class="container mt-5">
+  <h2 class="mb-4">Your Cart:</h2>
+
+  <div *ngIf="isRemoved" class="alert alert-success">
+    Removed from cart
+  </div>
+
+  <div *ngIf="cartProducts.length > 0; else emptyCart">
+    
+    <div class="row">
+      <div class="col-md-8">
+        <div *ngFor="let item of cartProducts" class="card mb-3">
+          <div class="row g-0 custom-height">
+            <div class="col-md-4 custom-height">
+              <img src="electronics.jpg" class="img-fluid rounded-start custom-height" alt="prodImage">
+              <!-- <img [src]="item.product.imageUrl" class="img-fluid rounded-start" alt="Product Image"> -->
+            </div>
+            <div class="col-md-8 custom-height">
+              <div class="card-body custom-height">
+                <h5 class="card-title">{{ item.cartProduct.product.title }}</h5>
+                <p class="card-text">
+                  Quantity: {{ item.cartProduct.productQuantity }} <br>
+                  Price: Rs.{{ item.cartProduct.amountPayable }}
+                </p>
+                <button class="btn btn-danger btn-sm" (click)="removeFromCart(item.cartProduct.id)">Remove</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+  
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Cart Summary</h5>
+              <p class="card-text">
+                Total Items: {{ cartProducts[0].cartProduct.cart.cartQuantity }}  <br>
+                Total Price: Rs. {{ cartProducts[0].cartProduct.cart.cartTotal }} 
+              </p>
+              <button class="btn btn-success" (click)="checkout()">Proceed to Checkout</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #emptyCart>
+      <p>Your cart is empty!</p>
+    </ng-template>
+  </div>
+  

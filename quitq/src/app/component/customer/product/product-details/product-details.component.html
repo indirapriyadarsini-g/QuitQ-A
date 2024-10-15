@@ -1,0 +1,100 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+    <!-- Row for the image and product details inside a larger card -->
+    <div class="row">
+      <div class="col-md-12">
+        <!-- Larger card holding product information -->
+        <div class="card product-card custom-padding">
+          <div class="row">
+            <!-- Product image card, occupying less space -->
+            <div class="col-md-4 image-container">
+              <div class="card">
+                <img src="electronics.jpg" alt="Product Image" class="card-img-top">
+              </div>
+            </div>
+  
+            <!-- Product details card, occupying more space -->
+            <div class="col-md-8 details-container">
+              <h1 class="text-capitalize" >{{ product.title }}</h1>
+              <h3 class="category">{{ product.c }}</h3>
+              <p class="price">Price: Rs.{{ product.price }}</p>
+              <p class="discount">Discount: {{ product.discount }}%</p>
+              <p class="stock" [ngClass]="{ 'in-stock': !product.outOfStock, 'out-of-stock': product.outOfStock }">
+                {{ product.outOfStock ? 'Out of Stock' : 'In Stock' }}
+              </p>
+  
+              <!-- Add to Cart and Add to Wishlist buttons aligned to the right -->
+              <div class="actions text-bottom">
+                <button *ngIf="!isAddedToCart" class="btn btn-success me-2" (click)="addToCart(pwi.product)">Add to Cart</button>
+                <button *ngIf="isAddedToCart" class="btn btn-secondary me-2" (click)="goneToCart()"  [routerLink] = "['/customer/cart']">Go to Cart</button>
+                <span *ngIf="isAddedToCart"> Added to cart.</span>
+                <button class="btn btn-secondary">Add to Wishlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Row for reviews section -->
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="reviews">
+          <h4>Product Reviews</h4>
+          <div *ngFor="let item of reviews">
+            <div  class="stars"  *ngFor="let star of [].constructor(item.stars)"> 
+              <i class="pi pi-heart-fill"></i> 
+            </div>
+
+            <p>{{ item.reviewContent }}</p>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- ----------------------------------
+
+
+<div class="container">
+ 
+    <div class="row">
+     
+      <div class="col-md-6">
+        <img src="electronics.jpg" alt="">
+       
+      </div>
+  
+      
+      <div class="col-md-6">
+        <h1>{{ pwi.product.title }}</h1>
+        <h3 class="category">{{ pwi.product.c }}</h3>
+        <p class="price">Price: Rs.{{ pwi.product.price }}</p>
+        <p class="discount">Discount: {{ pwi.product.discount }}%</p>
+        <p class="stock" [ngClass]="{ 'in-stock': !pwi.product.outOfStock, 'out-of-stock': pwi.product.outOfStock }">
+          {{ pwi.product.outOfStock ? 'Out of Stock' : 'In Stock' }}
+        </p>
+      </div>
+    </div>
+  
+    
+    <div class="row mt-4">
+      <div class="col-md-12">
+        <div class="actions">
+          <button class="btn custom-cart-button">Add to Cart</button>
+          <button class="btn custom-wishlist-button">Add to Wishlist</button>
+        </div>
+  
+        <div class="reviews mt-4">
+          <h4>Product Reviews</h4>
+          <div *ngFor="let review of reviews">
+            <p>{{ review }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   -->

@@ -1,0 +1,90 @@
+.order-details {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  
+  .order-summary, .shipping-info {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-items {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-item .card {
+    border: none;
+  }
+  
+  .order-item img {
+    max-width: 100%;
+    border-radius: 5px;
+  }
+  
+  .actions button {
+    display: block;
+    width: 100%;
+  }
+  
+  .actions .btn-outline-primary {
+    color: #007bff;
+  }
+  
+  .actions .btn-outline-secondary {
+    color: #6c757d;
+  }
+  
+  .actions .btn-outline-warning {
+    color: #ffc107;
+  }
+  
+  .order-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .order-product-image img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .order-product-info {
+    text-align: center;
+  }
+  
+  .order-product-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .order-product-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .order-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .order-buttons .btn {
+    width: 30%;
+    padding: 10px 0;
+  }
+  

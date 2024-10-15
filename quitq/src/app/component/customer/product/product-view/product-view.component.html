@@ -1,0 +1,42 @@
+
+<div class="mt-5"></div>
+<h2 class="text-center mb-4"> Products</h2>
+<div class="row g-4">
+    
+    <div class="col-md-3" *ngFor="let item of filteredProds">
+        <div class="card product-card shadow-sm"   >
+            <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
+            <div class="custom-image-container" (click)="getProductDetails(item)">
+                <img [src]="'assets/product/'+ item.imageList[0].imageName " loading="lazy" class="card-img-top" alt="{{item.product.title}}">
+            </div>
+            <!-- <img [src]="'assets/product/mouse.png'" loading="lazy" class="card-img-top" alt="{{item.product.title}}"> -->
+            <div class="card-body text-center">
+                <h5 class="card-title text-capitalize">{{item.product.title}}</h5>
+                <p class="card-text custom-out-of-stock custom-left-align" *ngIf="item.product.outOfStock">Out of stock</p>
+                <p class="card-text custom-in-stock custom-left-align" *ngIf="!item.product.outOfStock" >In stock</p>
+                <p class="card-text custom-category">Category: {{item.product.c}}</p>
+                <p class="card-text text-muted">Price: {{item.product.price}}</p>
+                <button class=" custom-cart-button custom-button" (click)="addToCart(item.product)">Add to Cart</button>
+                &nbsp; 
+                <!-- <div class="card">
+                    <p-button type="button" pRipple 
+                    (onClick)="addToWishlist(item.product)" 
+                     label="Add to Wishlist" 
+                    styleClass="mr-2" />
+           <p-messages [(value)]="messages" [enableService]="true" />
+                   
+                </div> -->
+               <button class=" custom-wishlist-button custom-button" (click)="addToWishlist(item.product)">Add to Wishlist</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="flex align-items-center justify-content-start">
+    <div class="flex justify-content-center align-items-center gap-3">
+        <span>Items per page: </span>
+        <p-slider [(ngModel)]="rows" (ngModelChange)="first = 0" [style]="{ width: '10rem' }" [min]="10" [max]="120" [step]="30" />
+    </div>
+    <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="productList?.length" [showFirstLastIcon]="false" 
+        [showCurrentPageReport]="true" currentPageReportTemplate="{first} - {last} of {totalRecords}" ></p-paginator>
+</div>

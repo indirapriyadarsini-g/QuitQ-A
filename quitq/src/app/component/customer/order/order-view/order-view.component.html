@@ -1,0 +1,68 @@
+
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+  <!-- Delivery Address Section -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <h5>Delivery Address</h5>
+    </div>
+    <!-- <div class="card-body">
+      <p><strong>Customer Name:</strong> {{ customer.name }}</p>
+      <p><strong>Address:</strong> {{ customer.address.line1 }}, {{ customer.address.line2 }}</p>
+      <p><strong>City:</strong> {{ customer.address.city }}, {{ customer.address.state }}</p>
+      <p><strong>Postal Code:</strong> {{ customer.address.postalCode }}</p>
+      <p><strong>Contact:</strong> {{ customer.contact }}</p>
+    </div> -->
+  </div>
+
+  <!-- Order Products Section -->
+  <div class="row">
+    <div class="col-md-8">
+      <div *ngFor="let product of orderInfo.cart.productList" class="card mb-3">
+        <div class="card-body d-flex justify-content-between align-items-center">
+          <!-- Product Name -->
+          <div>
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">Price: {{ product.price | currency }}</p>
+          </div>
+          
+          <!-- Quantity Controls -->
+          <div class="quantity-controls d-flex align-items-center">
+            <button pButton icon="pi pi-minus" (click)="onDecrement(product)" class="p-button-sm"></button>
+            <span class="mx-2">{{ product.quantity }}</span>
+            <button pButton icon="pi pi-plus" (click)="onIncrement(product)" class="p-button-sm"></button>
+          </div>
+
+          <!-- Product Total Price -->
+          <div>
+            <p><strong>Total:</strong> {{ product.quantity * product.price | currency }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary Section -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-header">
+          <h5>Order Summary</h5>
+        </div>
+        <div class="card-body">
+          <p><strong>Order Total:</strong> {{ orderInfo.orderAmount | currency }}</p>
+          <p><strong>Discount:</strong> {{ orderInfo.orderDiscount | currency }}</p>
+          <p><strong>Delivery Fee:</strong> {{ orderInfo.orderFee | currency }}</p>
+          <p><strong>Status:</strong> {{ orderInfo.status }}</p>
+          <p><strong>Order Placed Time:</strong> {{ orderInfo.orderPlacedTime }}</p>
+          <hr>
+          <h5><strong>Grand Total:</strong> {{ getGrandTotal() | currency }}</h5>
+        </div>
+      </div>
+
+      <!-- Proceed to Payment Button -->
+      <div class="text-right mt-4">
+        <button pButton type="button" label="Proceed to Payment" class="p-button-success" (click)="proceedToPayment()"></button>
+      </div>
+    </div>
+  </div>
+</div>

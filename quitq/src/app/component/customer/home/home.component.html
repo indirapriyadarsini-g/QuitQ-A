@@ -1,0 +1,45 @@
+<app-navbar></app-navbar>
+
+<div class="container my-5">
+    <h2 class="text-center mb-4">Categories</h2>
+    <div class="row g-4">
+       
+            <div class="col-md-3" (click)="onCategoryClick('GROCERIES')">
+                <div class="card category-card shadow-sm">
+                    <img src="groceries.jpg" class="card-img-top" alt="Category 1">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">Groceries</h5>
+                    </div>
+                </div>
+            </div>
+        
+        
+        <div class="col-md-3" (click)="onCategoryClick('HOME')">
+            <div class="card category-card shadow-sm">
+                <img src="home.jpg" class="card-img-top" alt="Category 2">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Home</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" (click)="onCategoryClick('ELECTRONIC')">
+            <div class="card category-card shadow-sm">
+                <img src="electronics.jpg" class="card-img-top" alt="Category 3">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Electronics</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" (click)="onCategoryClick('FASHION')">
+            <div class="card category-card shadow-sm">
+                <img src="fashion.jpg" class="card-img-top" alt="Category 4">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Fashion</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    <app-product-view></app-product-view>

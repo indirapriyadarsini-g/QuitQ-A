@@ -1,0 +1,43 @@
+.container {
+    max-width: 1200px;
+  }
+  
+  .order-card {
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-header {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 15px;
+  }
+  
+  .order-body {
+    padding-top: 15px;
+  }
+  
+  .order-image {
+    width: 100px;
+    height: auto;
+    border: 1px solid #ddd;
+  }
+  
+  .order-actions button {
+    margin-right: 10px;
+  }
+  
+  .btn-warning {
+    background-color: #f0c14b;
+    border-color: #a88734;
+    color: black;
+  }
+  
+  .btn-light {
+    background-color: #f9f9f9;
+    color: #555;
+    border: 1px solid #ddd;
+  }
+  

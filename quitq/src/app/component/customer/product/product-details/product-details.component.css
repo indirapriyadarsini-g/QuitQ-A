@@ -1,0 +1,230 @@
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+h1, h3, p {
+  margin-bottom: 10px;
+}
+
+/* Product name styling */
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  color: #333;
+}
+
+/* Product category with a curved background */
+.category {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 8px 15px;
+  border-radius: 30px;
+  display: inline-block;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Product price styling */
+.price {
+  font-size: 24px;
+  font-weight: 600;
+  color: #007bff;
+}
+
+/* Discount information */
+.discount {
+  color: #ff4757;
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 10px;
+}
+
+/* Stock status */
+.stock {
+  font-size: 18px;
+  margin-top: 20px;
+  font-weight: 600;
+}
+
+.in-stock {
+  color: #28a745;
+}
+
+.out-of-stock {
+  color: #ff4757;
+}
+
+/* Button styles */
+.actions {
+  margin-top: 30px;
+}
+
+.actions .btn {
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.actions .btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.actions .btn-success:hover {
+  background-color: #218838;
+}
+
+.actions .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.actions .btn-secondary:hover {
+  background-color:black;
+}
+
+.actions .btn + .btn {
+  margin-left: 15px;
+}
+
+/* Reviews section */
+.reviews {
+  margin-top: 40px;
+}
+
+.reviews h4 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.reviews p {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  margin-top: 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.reviews p:first-child {
+  margin-top: 0;
+}
+
+/* Adjustments for the Product Layout */
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  /* max-width: 500px;  */
+ 
+}
+
+.image-container {
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.details-container {
+  padding-left: 10px;
+}
+
+.details-container h1 {
+  font-size: 1.5rem; /* Reduced title size */
+  font-weight: 600;
+}
+
+.details-container .category {
+  background-color: #e0ffe0;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 1.2rem;
+}
+
+.details-container .price, 
+.details-container .discount {
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.details-container .stock {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.details-container .stock.in-stock {
+  color: green;
+}
+
+.details-container .stock.out-of-stock {
+  color: red;
+}
+
+/* Buttons section */
+.actions button {
+  width: 150px;
+  padding: 10px;
+  font-size: 1.1rem;
+  border-radius: 5px;
+}
+
+.actions .btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.actions .btn-secondary {
+  background-color: #6c757d;
+  border: none;
+}
+
+.actions button:hover {
+  opacity: 0.9;
+}
+
+/* Reviews section */
+.reviews h4 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.reviews p {
+  font-size: 1rem;
+  color: #555;
+}
+
+.stars {
+  display: inline-flex;
+}
+
+.custom-padding {
+  padding: 20px;
+}

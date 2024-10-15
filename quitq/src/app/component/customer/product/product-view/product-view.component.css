@@ -1,0 +1,40 @@
+.custom-button{
+    padding: 3px 8px;
+    border-radius: 5px;
+}
+
+img {
+    width: 100%;
+    max-width: 300px; /* Example size */
+    height: auto;
+  }
+  
+.custom-wishlist-button{
+    color:white;
+    border:none;
+    background-color:#64CA8D;
+    
+   
+}
+
+.custom-cart-button{
+    color: white;
+    border:none;
+    background-color: #3B71FE;
+}
+
+.custom-image-container {
+    width: 100%; /* Set the desired width */
+    height: 250px; /* Set the desired height */
+    overflow: hidden; /* Hide any overflow */
+    position: relative; /* Positioning context for the image */
+}
+
+.custom-image-container img {
+    width: 100%; /* Make the image take up the full width */
+    height: 100%; /* Maintain aspect ratio */
+    /* position: absolute; /* Position the image 
+   /* top: 50%;  Center vertically 
+    left: 50%; /* Center horizontally 
+    transform: translate(-50%, -50%); /* Adjust for centering */
+}

@@ -1,0 +1,13 @@
+.custom-text{
+    color: aliceblue;
+}
+
+.custom-bg{
+    background-color: #d6e5b1;
+    color:#4b6043 !important; 
+}
+
+.navbar-nav .nav-link {
+    color: black !important; 
+    margin-left: 15px; 
+  }
