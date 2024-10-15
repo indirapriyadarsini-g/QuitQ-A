@@ -52,6 +52,7 @@ import { ForgotPasswordComponent } from './component/vendor/password/forgot-pass
 import { ResetPasswordComponent } from './component/vendor/password/reset-password/reset-password.component';
 import { AuthGuard } from './component/vendor/guard/guard.guard';
 import { EnterEmailComponent } from './component/vendor/password/enter-email/enter-email.component';
+import { ReturnComponent } from './component/customer/return/return.component';
 
 
 
@@ -94,6 +95,9 @@ export const routes: Routes = [
         "path" : "customer/view-product-details" , component: ProductDetailsComponent,
     },
     {
+        "path" : "customer/product-details/:pId" , component: ProductDetailsComponent,
+    },
+    {
         "path" : "customer/add-review/:pId" , component: AddReviewComponent,
     },
     {
@@ -123,9 +127,9 @@ export const routes: Routes = [
     {
         "path" : "customer/exchange/:opId" , component: ExchangeComponent,
     },
-    // {
-    //     "path" : "" , component: ,
-    // }
+    {
+        "path" : "customer/return/:opId" , component: ReturnComponent,
+    },
     // {
     //     "path" : "" , component: ,
     // }

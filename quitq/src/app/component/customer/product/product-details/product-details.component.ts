@@ -4,7 +4,7 @@ import { ProductWithImageModule } from '../../../../model/product-with-image/pro
 import { CustomerService } from '../../../../service/customer.service';
 import { Product } from '../../../../model/product/product.module';
 import { NavbarComponent } from "../../navbar/navbar.component";
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-product-details',
@@ -14,6 +14,8 @@ import { Router, RouterLink } from '@angular/router';
   styleUrl: './product-details.component.css'
 })
 export class ProductDetailsComponent implements OnInit{
+
+  
 
 images: any[];
 responsiveOptions: GalleriaResponsiveOptions[];
@@ -25,17 +27,28 @@ throw new Error('Method not implemented.');
 
 pwi: any;
 product:Product;
+pId:any;
 constructor(
   private customerService: CustomerService,
-  private router : Router
+  private router : Router,
+  private route:ActivatedRoute
 ){}
 
   ngOnInit(): void {
-    this.pwi = this.customerService.getProductSelected();
-    console.log(this.pwi);
-    this.images = this.pwi.imList;
-    this.product = this.pwi.product;
-    this.customerService.getProductReviews(this.pwi.product.id).subscribe({
+    this.route.paramMap.subscribe({
+      next: (params)=> {
+        this.pId = Number(params.get('pId'));
+        console.log("received pID",this.pId);
+      }
+    })
+    // this.pwi = this.customerService.getProductSelected();
+    // console.log(this.pwi);
+    this.fetchProductDetails(this.pId);
+    this.fetchCustomerReviews(this.pId);
+  }
+
+  fetchCustomerReviews(pId:any){
+    this.customerService.getProductReviews(pId).subscribe({
       next: (data) =>{
         this.reviews = data;
         console.log(this.reviews);
@@ -44,13 +57,30 @@ constructor(
         console.log(err);
       }
     })
-    console.log(this.pwi);
+  }
+  
+
+
+  fetchProductDetails(pId:any){
+    this.customerService.getProductWImage(pId).subscribe({
+      next: (pwidata)=> {
+        console.log(pwidata);
+        this.pwi = pwidata;
+        this.images = this.pwi.imList;
+        this.product = this.pwi.product;
+      }
+    })
   }
 
   isAddedToCart:boolean = false;
+  isAddedToWishlist:boolean = false;
 
   goneToCart(){
     this.isAddedToCart = false;
+  }
+
+  goneToWishlist(){
+    this.isAddedToWishlist = false;
   }
 
 
@@ -69,6 +99,26 @@ constructor(
       this.router.navigateByUrl("/auth/login");
     }
     
+    }
+
+    addToWishlist(product: Product) {
+
+      if(!localStorage.getItem('token')){
+        this.router.navigateByUrl("/auth/login");
+      }
+      else{
+        this.customerService.addToWishlist(product).subscribe({
+          next: (data) => {
+            
+            console.log("added to wishlist");
+            this.isAddedToWishlist = true;
+          },
+          error: (err) =>{
+            console.log(err);
+          }
+        })
+      }
+      
     }
 
 }

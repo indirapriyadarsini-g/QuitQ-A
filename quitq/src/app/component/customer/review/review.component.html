@@ -1,1 +1,26 @@
-<p>review works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-4">
+    <div class="row g-3" *ngIf="review && review.length > 0">
+        
+      <div class="col-md-4" *ngFor="let rev of review">
+        <div class="card h-100 shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title">Product ID: {{ rev.product.id }}</h5>
+            <p class="card-text"><strong>Title:</strong> {{ rev.product.title }}</p>
+            <p class="stars">
+              <ng-container *ngFor="let star of [1, 2, 3, 4, 5]; let i = index">
+                <span class="fa" [ngClass]="i < rev.stars ? 'fa-star checked' : 'fa-star'"></span>
+              </ng-container>
+            </p>
+            <p class="review-content"><strong>Review:</strong> {{ rev.reviewContent }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <div *ngIf="!review || review.length === 0" class="text-center">
+      <p>No reviews found</p>
+    </div>
+  </div>
+  

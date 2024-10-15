@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CustomerService } from '../../../../service/customer.service';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { CommonModule, NgFor } from '@angular/common';
@@ -7,22 +7,24 @@ import { CommonModule, NgFor } from '@angular/common';
 @Component({
   selector: 'app-order-summary',
   standalone: true,
-  imports: [NavbarComponent,NgFor,CommonModule],
+  imports: [NavbarComponent,NgFor,CommonModule, RouterLink],
   templateUrl: './order-summary.component.html',
   styleUrl: './order-summary.component.css'
 })
 export class OrderSummaryComponent implements OnInit{
 
+ 
 
+  reviewProduct(pId:any) {
+    console.log("sending as",pId);
+  this.router.navigate(['/customer/add-review',pId]);
+  }
+  returnProduct(opId:any) {
+    this.router.navigate(['/customer/return',opId])
+  }
+exchangeProduct(opId:any) {
+  this.router.navigate(['/customer/exchange',opId])
 
-reviewItem(arg0: any) {
-throw new Error('Method not implemented.');
-}
-returnItem(arg0: any) {
-throw new Error('Method not implemented.');
-}
-exchangeItem(arg0: any) {
-throw new Error('Method not implemented.');
 }
 
 

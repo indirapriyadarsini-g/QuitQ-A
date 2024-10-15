@@ -1,4 +1,4 @@
-import { NgClass, NgFor } from '@angular/common';
+import { CommonModule, NgClass, NgFor } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '../../../service/customer.service';
@@ -7,7 +7,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
 @Component({
   selector: 'app-past-orders',
   standalone: true,
-  imports: [NgClass, NgFor, NavbarComponent],
+  imports: [NgClass, NgFor, NavbarComponent,CommonModule],
   templateUrl: './past-orders.component.html',
   styleUrl: './past-orders.component.css'
 })

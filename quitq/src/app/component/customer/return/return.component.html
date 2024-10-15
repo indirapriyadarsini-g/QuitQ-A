@@ -1,1 +1,44 @@
-<p>return works!</p>
+<app-navbar></app-navbar>
+
+<div class="container mt-5">
+    <h2 class="text-center">Request for Return</h2>
+  
+    <form (ngSubmit)="onSubmit()" #returnForm="ngForm" class="mt-4">
+
+      <div class="form-group">
+        <label for="returnReason">Reason for Return</label>
+        <textarea
+          id="returnReason"
+          class="form-control"
+          rows="3"
+          [(ngModel)]="reason"
+          name="returnReason"
+          required
+        ></textarea>
+      </div>
+  
+      <div class="form-group mt-3">
+        <label for="returnQuantity">Quantity</label>
+        <input
+          type="number"
+          id="returnQuantity"
+          class="form-control"
+          [(ngModel)]="quantity"
+          name="returnQuantity"
+          min="1"
+          required
+        />
+      </div>
+  
+      
+      <button type="submit" class="btn btn-primary mt-4" [disabled]="!returnForm.form.valid">Submit Return Request</button>
+  
+      
+      <button type="button" class="btn btn-secondary mt-4 ms-3" (click)="goBack()">Go Back</button>
+    </form>
+  
+    <div *ngIf="isReturn" class="alert alert-success mt-4">
+      Request sent!
+    </div>
+  </div>
+   

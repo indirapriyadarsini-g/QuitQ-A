@@ -58,6 +58,10 @@ export class AddressViewComponent implements OnInit{
     })
   } 
 
+  goBack(){
+    window.history.back();
+  }
+
 
 
 }

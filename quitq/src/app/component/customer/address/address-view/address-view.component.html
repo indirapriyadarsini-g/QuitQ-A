@@ -37,8 +37,17 @@
     <div class="alert alert-success" *ngIf="isSubmit">
       Address added!
     </div>
+
     <br>
-    <button class="btn btn-primary" [routerLink]="['/customer/profile']"> Back to Profile </button>
+    <div *ngIf="isSubmit"  >
+      <button (click)="goBack()" >
+        Go Back
+      </button>
+      
+    </div>
+
+    <br>
+    <button class="btn btn-primary" [routerLink]="['/customer/profile']"> Go to Profile </button>
           
     </div>
 

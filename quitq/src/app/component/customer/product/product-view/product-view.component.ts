@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CustomerService } from '../../../../service/customer.service';
 import { Product } from '../../../../model/product/product.module';
 import { NgFor, NgIf } from '@angular/common';
-import { Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { ProductWithImageModule } from '../../../../model/product-with-image/product-with-image.module';
 import { combineLatest } from 'rxjs';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
@@ -32,7 +32,8 @@ export class ProductViewComponent implements OnInit{
 
 
   constructor(private customerService: CustomerService,
-    private router: Router
+    private router: Router,
+    private route:ActivatedRoute
   ){ }
 
 filteredProds:any;
@@ -146,8 +147,11 @@ filteredProds:any;
  
 
   getProductDetails(item:ProductWithImageModule){
-    this.customerService.setProductSelected(item);
-    this.router.navigateByUrl("/customer/view-product-details");
+    const pId = item.product.id;
+    this.router.navigate(["/customer/product-details",pId]);
+
+    // this.customerService.setProductSelected(item);
+    // this.router.navigateByUrl("/customer/view-product-details");
   }
 
   first: number = 0;

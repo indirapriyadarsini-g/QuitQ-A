@@ -23,19 +23,14 @@ export class CartViewComponent {
     this.loadCart();
     this.isRemoved = false;
   }
-
+ 
   loadCartProducts(): void {
     this.customerService.getCartProducts().subscribe({
       next: (products) => {
+        console.log("cart prods:",products);
         this.cartProducts = products;
 
-        this.customerService.getCartInfo().subscribe({
-          next: (cartData) => {
-            console.log("Cart set as:")
-            console.log(cartData);
-            // this.customerService.setCart(cartData);
-          }
-        })
+        this.loadCart();
 
       },
       error: (err) => {

@@ -17,7 +17,7 @@ html,body{
 
 .custom-out-of-stock{
     background-color: tomato;
-    border-radius: 2px;
+    border-radius: 10px;
 }
 
 .custom-in-stock{

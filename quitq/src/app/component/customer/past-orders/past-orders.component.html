@@ -4,7 +4,7 @@
     <div class="row">
       <!-- Loop through orders using *ngFor -->
       <div class="col-md-8 mb-4" *ngFor="let order of orders" (click)="goToOrderDetails(order.orderProduct.id)">
-        orders here
+        
         <div class="card shadow-sm p-2 order-card">
           <div class="row no-gutters">
             <div class="col-4 ">
@@ -15,7 +15,7 @@
             <div class="col-8">
               <div class="card-body p-2">
                 <h5 class="card-title">Order ID: {{ order.orderProduct.order.id }}</h5>
-                <p class="card-text">Order placed on : {{ order.orderProduct.order.orderPlacedTime }}</p>
+                <p class="card-text">Order placed on : {{ order.orderProduct.order.orderPlacedTime | date }}</p>
                 <p class="card-text">Amount: ₹{{ order.orderProduct.amountPayable }}</p>
                 <p class="card-text">
                   Status: <span [ngClass]="{'text-success': order.orderProduct.order.status === 'Delivered', 'text-warning': order.orderProduct.order.status === 'ORDERED', 'text-danger': order.orderProduct.order.status === 'Cancelled'}">{{ order.orderProduct.order.status }}</span>

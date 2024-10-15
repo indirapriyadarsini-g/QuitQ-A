@@ -14,6 +14,24 @@ export class CustomerService {
 
   constructor(private http: HttpClient) { }
 
+
+  getMyReviewsApi = 'http://localhost:8083/customer/my-reviews';
+
+  getMyReviews(){
+    const token = localStorage.getItem('token');
+    return this.http.get(this.getMyReviewsApi,{
+      headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+    })
+  }
+
+
+  getProductWImageApi = 'http://localhost:8083/customer/get-pwi-by-pid/'
+
+  getProductWImage(pId:any):Observable<any>{
+    return this.http.get(this.getProductWImageApi+pId);
+  }
+
+
   productList:Product[];
 
   getProductList():Product[]{
@@ -273,7 +291,23 @@ export class CustomerService {
     return this.http.delete(this.removeFromWishlistApi+wpId);
   }
 
+requestReturnApi = 'http://localhost:8083/customer/request-return';
 
+requestReturn(rdto:any):Observable<any>{
+  const token = localStorage.getItem('token');
+  return this.http.post(this.requestReturnApi,rdto,{
+    headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+  })
+}
+
+requestExchangeApi = 'http://localhost:8083/customer/request-exchange';
+
+requestExchange(edto:any):Observable<any>{
+  const token = localStorage.getItem('token');
+  return this.http.post(this.requestExchangeApi,edto,{
+    headers: new HttpHeaders().set('Authorization', 'Bearer '+token)
+  })
+}
 
 
   
