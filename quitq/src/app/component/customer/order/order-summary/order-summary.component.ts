@@ -58,7 +58,7 @@ address:any;
     this.service.viewAddress().subscribe({
       next: (addressdata)=>{
         console.log("address data: ",addressdata);
-        this.address = addressdata;
+        this.address = addressdata[addressdata.length-1];
       }
     })
   }

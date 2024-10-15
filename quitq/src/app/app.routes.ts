@@ -15,6 +15,9 @@ import { EditProfileComponent } from './component/customer/edit-profile/edit-pro
 import { PastOrdersComponent } from './component/customer/past-orders/past-orders.component';
 import { OrderSummaryComponent } from './component/customer/order/order-summary/order-summary.component';
 import { OrderSuccessfulComponent } from './component/customer/order-successful/order-successful.component';
+import { AddressViewComponent } from './component/customer/address/address-view/address-view.component';
+import { AddReviewComponent } from './component/customer/add-review/add-review.component';
+import { ExchangeComponent } from './component/customer/exchange/exchange.component';
 
 export const routes: Routes = [
     
@@ -55,6 +58,9 @@ export const routes: Routes = [
         "path" : "customer/view-product-details" , component: ProductDetailsComponent,
     },
     {
+        "path" : "customer/add-review/:pId" , component: AddReviewComponent,
+    },
+    {
         "path" : "customer/profile" , component: ProfileComponent,
     },
     {
@@ -74,7 +80,16 @@ export const routes: Routes = [
     },
     {
         "path" : "customer/order-successful" , component: OrderSuccessfulComponent,
-    }
+    },
+    {
+        "path" : "customer/my-address" , component: AddressViewComponent,
+    },
+    {
+        "path" : "customer/exchange/:opId" , component: ExchangeComponent,
+    },
+    // {
+    //     "path" : "" , component: ,
+    // }
     // {
     //     "path" : "" , component: ,
     // }

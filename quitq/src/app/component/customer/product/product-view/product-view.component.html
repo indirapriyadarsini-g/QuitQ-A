@@ -4,7 +4,7 @@
 <div class="row g-4">
     
     <div class="col-md-3" *ngFor="let item of filteredProds">
-        <div class="card product-card shadow-sm"   [routerLink]="['/customer/product-details']">
+        <div class="card product-card shadow-sm"   >
             <!-- <img [src]="product.imageUrl" class="card-img-top" alt="{{product.title}}"> -->
             <div class="custom-image-container" (click)="getProductDetails(item)">
                 <img [src]="'assets/product/'+ item.imageList[0].imageName " loading="lazy" class="card-img-top" alt="{{item.product.title}}">
@@ -18,7 +18,15 @@
                 <p class="card-text text-muted">Price: {{item.product.price}}</p>
                 <button class=" custom-cart-button custom-button" (click)="addToCart(item.product)">Add to Cart</button>
                 &nbsp; 
-                <button class=" custom-wishlist-button custom-button" (click)="addToWishlist(item.product)">Add to Wishlist</button>
+                <!-- <div class="card">
+                    <p-button type="button" pRipple 
+                    (onClick)="addToWishlist(item.product)" 
+                     label="Add to Wishlist" 
+                    styleClass="mr-2" />
+           <p-messages [(value)]="messages" [enableService]="true" />
+                   
+                </div> -->
+               <button class=" custom-wishlist-button custom-button" (click)="addToWishlist(item.product)">Add to Wishlist</button>
             </div>
         </div>
     </div>

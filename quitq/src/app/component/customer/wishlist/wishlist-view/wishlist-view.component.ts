@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavbarComponent } from "../../navbar/navbar.component";
 import { NgFor, NgIf } from '@angular/common';
 import { CustomerService } from '../../../../service/customer.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,17 +13,23 @@ import { CustomerService } from '../../../../service/customer.service';
   styleUrl: './wishlist-view.component.css'
 })
 export class WishlistViewComponent {
+
+
+  isRemoved:boolean = false;
 wlProducts: any;
 
-constructor(private customerService: CustomerService) {}
+constructor(private customerService: CustomerService,
+  private router:Router
+) {}
 
   ngOnInit(): void {
     this.loadWishlistProducts();
   }
 
   loadWishlistProducts(): void {
-    this.customerService.getCartProducts().subscribe({
+    this.customerService.getWishlistProducts().subscribe({
       next: (products) => {
+        console.log(products);
         this.wlProducts = products;
       },
       error: (err) => {
@@ -32,11 +39,29 @@ constructor(private customerService: CustomerService) {}
       
     );
   }
-// removeFromWishlist(productId: number): void {
-    
-//   this.customerService.removeFromWishlist(productId).subscribe(() => {
-//     this.wlProducts = this.wlProducts.filter(p => p.id !== productId);
-//   });
-// }
+  moveToCart(product: any) {
+    if(!localStorage.getItem('token')){
+      this.router.navigateByUrl("/auth/login");
+    }
+    else{
+      this.customerService.addToCart(product).subscribe({
+        next: (data) => {
+          console.log("added to cart");
+          // alert("Added to cart");
+        },
+        error: (err) =>{
+          console.log(err);
+        }
+      })
+    }
+  }
+
+removeFromWishlist(wpId: number): void {
+    this.isRemoved = true;
+  this.customerService.removeFromWishlist(wpId).subscribe(() => {
+    this.wlProducts = this.wlProducts.filter(p => p.id !== wpId);
+    this.loadWishlistProducts();
+  });
+}
 
 }

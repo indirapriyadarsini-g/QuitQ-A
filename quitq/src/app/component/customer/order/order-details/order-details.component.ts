@@ -1,23 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CustomerService } from '../../../../service/customer.service';
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { NavbarComponent } from "../../navbar/navbar.component";
 
 @Component({
   selector: 'app-order-details',
   standalone: true,
-  imports: [NgFor, NavbarComponent],
+  imports: [NgFor, NavbarComponent, CommonModule],
   templateUrl: './order-details.component.html',
   styleUrl: './order-details.component.css'
 })
 export class OrderDetailsComponent implements OnInit {
+reviewProduct(pId:any) {
+  console.log("sending as",pId);
+this.router.navigate(['/customer/add-review',pId]);
+}
+exchangeProduct(opId:any) {
+  this.router.navigate(['/customer/exchange',opId])
 
-  op: any;  
-
+}
+returnProduct(opId:any) {
+  this.router.navigate(['/customer/return',opId])
+}
+  opwi:any;
+ 
   constructor(
     private customerService: CustomerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -29,7 +40,9 @@ export class OrderDetailsComponent implements OnInit {
       console.log("received opId: ",opId);
     this.customerService.viewOrderDetails(opId).subscribe({
       next: (data) => {
-        this.op = data
+        this.opwi = data;
+       
+       
         console.log("order product details:");
         console.log(data);
       },

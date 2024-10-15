@@ -7,6 +7,10 @@ import { ProductWithImageModule } from '../../../../model/product-with-image/pro
 import { combineLatest } from 'rxjs';
 import { PaginatorModule, PaginatorState } from 'primeng/paginator';
 import { SliderModule } from 'primeng/slider';
+import { Message } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { ButtonModule } from 'primeng/button';
+import { RippleModule } from 'primeng/ripple';
 
 interface PageEvent {
   first: number;
@@ -18,14 +22,14 @@ interface PageEvent {
 @Component({
   selector: 'app-product-view',
   standalone: true,
-  imports: [NgFor,RouterLink,NgIf,PaginatorModule,SliderModule],
+  imports: [NgFor,RouterLink,NgIf,PaginatorModule,SliderModule,
+    MessagesModule, ButtonModule, RippleModule
+  ],
   templateUrl: './product-view.component.html',
   styleUrl: './product-view.component.css'
 })
 export class ProductViewComponent implements OnInit{
-addToWishlist(arg0: any) {
-throw new Error('Method not implemented.');
-}
+
 
   constructor(private customerService: CustomerService,
     private router: Router
@@ -109,6 +113,30 @@ filteredProds:any;
         },
         error: (err) =>{
           alert("Product already added.");
+          console.log(err);
+        }
+      })
+    }
+    
+  }
+
+
+
+  addToWishlist(product: Product) {
+
+    if(!localStorage.getItem('token')){
+      this.router.navigateByUrl("/auth/login");
+    }
+    else{
+      this.customerService.addToWishlist(product).subscribe({
+        next: (data) => {
+          this.addMessages()
+          console.log("added to wishlist");
+          alert("Added to wishlist");
+        },
+        error: (err) =>{
+          alert("Product already added.");
+          console.log(err);
         }
       })
     }
@@ -138,5 +166,19 @@ filteredProds:any;
       const end = this.first + this.rows;
       this.filteredProds = this.productList.slice(start, end);
     }
+
+
+    messages: any[] | undefined;
+
+    addMessages() {
+      this.messages = [
+          { severity: 'info', summary: 'Dynamic Info Message' },
+          { severity: 'success', summary: 'Added' },
+          { severity: 'warn', summary: 'Dynamic Warning Message' }
+      ];
+  }
+  clearMessages() {
+    this.messages = [];
+  }
   
 }

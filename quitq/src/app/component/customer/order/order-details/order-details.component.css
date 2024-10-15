@@ -43,3 +43,48 @@
     color: #ffc107;
   }
   
+  .order-details-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .order-product-image img {
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+  }
+  
+  .order-product-info {
+    text-align: center;
+  }
+  
+  .order-product-info h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .order-product-info p {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  
+  .order-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .order-buttons .btn {
+    width: 30%;
+    padding: 10px 0;
+  }
+  

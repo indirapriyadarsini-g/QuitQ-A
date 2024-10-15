@@ -58,6 +58,8 @@ throw new Error('Method not implemented.');
   // Method to handle form submission
   onSubmit() {
     this.searchService.setProdSearch(false);
+
+    this.fetchSearchProducts();
     console.log('Selected Category:', this.selectedCategory);
     console.log('Include Out of Stock:', this.includeOutOfStock);
     console.log('Selected Discount:', this.selectedDiscount);

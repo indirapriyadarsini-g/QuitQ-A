@@ -81,7 +81,7 @@ export class CustomerService {
     })
   }
 
-  addToWishlistApi = 'http://localhost:8083/customer/add-to-wishlist/';
+  addToWishlistApi = 'http://localhost:8083/customer/add-to-wishlist';
 
 
   addToWishlist(product:any): Observable<any>{
@@ -267,7 +267,11 @@ export class CustomerService {
   }
 
 
+  removeFromWishlistApi = 'http://localhost:8083/customer/remove-from-wishlist/'
 
+  removeFromWishlist(wpId:number):Observable<any>{
+    return this.http.delete(this.removeFromWishlistApi+wpId);
+  }
 
 
 
