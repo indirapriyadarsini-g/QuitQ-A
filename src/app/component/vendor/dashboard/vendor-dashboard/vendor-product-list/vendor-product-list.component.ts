@@ -108,7 +108,7 @@ OrderedProduct()
 {
   this.hardDeletemsg=undefined;
 
-  this.productService.viewOrderedProduct(this.pageNumber,this.pageSize).subscribe({
+  this.productService.viewOrderedProduct(this.pageNumber,10000).subscribe({
     next:(data)=>{
      this.products=data.content;
      this.totalPage=data.totalPages;
@@ -275,6 +275,7 @@ getCategorySold(){
   this.productService.getAllCategory(localStorage.getItem('token')).subscribe({
     next:(data)=>{
       this.category=data;
+    
       console.log(this.category)
 
     },
@@ -290,6 +291,7 @@ onChange(c:any){
   this.productService.getProductByCategoryName(c).subscribe({
     next:(data)=>{
       this.products=data;
+      this.getImageProduct();
     },
     error:(error)=>{
 console.log(error)
